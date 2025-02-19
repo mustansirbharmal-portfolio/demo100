@@ -1,0 +1,177 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}Tickets - Admin Dashboard{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .ticket-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .status-badge {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    .status-badge.open {
+        background: #fff3cd;
+        color: #856404;
+    }
+    .status-badge.closed {
+        background: #d4edda;
+        color: #155724;
+    }
+    .priority-badge {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    .priority-badge.high {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    .priority-badge.medium {
+        background: #fff3cd;
+        color: #856404;
+    }
+    .priority-badge.low {
+        background: #d4edda;
+        color: #155724;
+    }
+    .attachment-preview {
+        max-width: 100px;
+        max-height: 100px;
+        margin: 5px;
+        border-radius: 5px;
+        border: 1px solid #dee2e6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Support Tickets</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search tickets...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Filter Options -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary active" onclick="filterTickets('all')">All</button>
+            <button type="button" class="btn btn-outline-primary" onclick="filterTickets('open')">Open</button>
+            <button type="button" class="btn btn-outline-primary" onclick="filterTickets('closed')">Closed</button>
+        </div>
+    </div>
+</div>
+
+<!-- Tickets List -->
+<div class="tickets-list">
+    {% if tickets %}
+        {% for ticket in tickets %}
+        <div class="ticket-card" data-status="{{ ticket.status }}">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ ticket.title }}</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-person"></i> {{ ticket.user_name }}
+                        <span class="ms-3"><i class="bi bi-clock"></i> {{ ticket.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+                    </p>
+                    <p class="mb-3">{{ ticket.description }}</p>
+                    
+                    {% if ticket.attachments %}
+                    <div class="attachments mb-3">
+                        <p class="mb-2"><strong>Attachments:</strong></p>
+                        {% for attachment in ticket.attachments %}
+                        <a href="{{ url_for('upload.download_attachment', user_id=ticket.user_id, file_name=attachment.filename) }}" class="me-2">
+                            <img src="/static/img/file-icon.png" class="attachment-preview" alt="Attachment">
+                            <br>
+                            <small>{{ attachment.filename }}</small>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="mb-2">
+                        <span class="status-badge {{ ticket.status }}">
+                            {{ ticket.status.title() }}
+                        </span>
+                        <span class="priority-badge {{ ticket.priority }}">
+                            {{ ticket.priority.title() }}
+                        </span>
+                    </div>
+                    <p class="mb-2">
+                        <strong>Category:</strong> {{ ticket.category }}
+                    </p>
+                    {% if ticket.status == 'open' %}
+                    <button class="btn btn-success btn-sm" onclick="closeTicket('{{ ticket._id }}')">
+                        <i class="bi bi-check-circle"></i> Close Ticket
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No tickets available.</h3>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function closeTicket(ticketId) {
+        if (confirm('Are you sure you want to close this ticket?')) {
+            fetch(`/admin/tickets/close/${ticketId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert('Error closing ticket');
+                }
+            });
+        }
+    }
+
+    function filterTickets(status) {
+        document.querySelectorAll('.btn-outline-primary').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        document.querySelectorAll('.ticket-card').forEach(card => {
+            if (status === 'all' || card.dataset.status === status) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.ticket-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+</script>
+{% endblock %}

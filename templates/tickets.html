@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Tickets - WCM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F9FAFB;
+        }
+        .ticket-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            transition: transform 0.2s;
+        }
+        .ticket-card:hover {
+            transform: translateY(-2px);
+        }
+        .priority-high {
+            color: #dc3545;
+        }
+        .priority-medium {
+            color: #ffc107;
+        }
+        .priority-low {
+            color: #28a745;
+        }
+        .status-open {
+            background-color: #28a745;
+        }
+        .status-closed {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+<<<<<<< HEAD
+    <!-- Navigation Bar -->
+=======
+    
+    <!-- Navbar -->
+>>>>>>> master
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-weight: bold;">Western Capital Mortgage</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/onboarding">Onboarding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/closing-request">Request Closing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pda">PDA</a></li>
+<<<<<<< HEAD
+=======
+                    <li class="nav-item"><a class="nav-link" href="/cda">CDA</a></li>
+>>>>>>> master
+                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/room_scheduling">Conference Room</a></li>
+                    <li class="nav-item"><a class="btn btn-primary me-2" href="/create-ticket">Create Ticket</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0" href="#">AI Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/logout" onclick="return confirm('Are you sure you want to logout?')">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Support Tickets</h2>
+            <div>
+                <a href="/create-ticket" class="btn btn-primary me-2">Create New Ticket</a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">
+                        Filter Status
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/tickets?status=all">All Tickets</a></li>
+                        <li><a class="dropdown-item" href="/tickets?status=open">Open Tickets</a></li>
+                        <li><a class="dropdown-item" href="/tickets?status=closed">Closed Tickets</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {% if tickets %}
+            {% for ticket in tickets %}
+            <div class="ticket-card p-3">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h5 class="mb-1">{{ ticket.subject }}</h5>
+                        <p class="text-muted mb-2">{{ ticket.description }}</p>
+                        {% if ticket.attachments %}
+                        <div class="attachments mb-2">
+                            <p class="mb-1"><strong>Attachments:</strong></p>
+                            {% for attachment in ticket.attachments %}
+                            <a href="{{ url_for('download_attachment', ticket_id=ticket._id, file_name=attachment.filename) }}" 
+                               class="btn btn-sm btn-outline-secondary me-2 mb-2">
+                                <i class="bi bi-paperclip"></i> {{ attachment.filename }}
+                            </a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <span class="badge {% if ticket.status == 'open' %}bg-success{% else %}bg-secondary{% endif %} mb-2">
+                            {{ ticket.status|title }}
+                        </span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="badge bg-light text-dark me-2">{{ ticket.category }}</span>
+                        <span class="badge {% if ticket.priority == 'high' %}bg-danger{% elif ticket.priority == 'medium' %}bg-warning{% else %}bg-success{% endif %}">
+                            {{ ticket.priority|title }} Priority
+                        </span>
+                    </div>
+                    <div class="text-end">
+                        <small class="text-muted d-block">Created: {{ ticket.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                        <small class="text-muted d-block">Last Updated: {{ ticket.updated_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info">
+                No tickets found. <a href="/create-ticket">Create a new ticket</a> to get started.
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

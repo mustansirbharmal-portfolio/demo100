@@ -1,0 +1,75 @@
+<<<<<<< HEAD
+.form-footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+text-decoration: underline;
+}
+
+
+.form-footer h6 {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.form-footer i {
+    font-size: 18px; /* Icon size */
+}
+
+.form-footer {
+    background-color: #111827; /* Dark background color */
+    color: #ffffff; /* White text */
+    font-size: 14px;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+header h1 {
+font-size: 2rem;
+}
+
+header p {
+font-size: 1rem;
+}
+}
+=======
+.form-footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+text-decoration: underline;
+}
+
+
+.form-footer h6 {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.form-footer i {
+    font-size: 18px; /* Icon size */
+}
+
+.form-footer {
+    background-color: #111827; /* Dark background color */
+    color: #ffffff; /* White text */
+    font-size: 14px;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+header h1 {
+font-size: 2rem;
+}
+
+header p {
+font-size: 1rem;
+}
+}
+>>>>>>> master

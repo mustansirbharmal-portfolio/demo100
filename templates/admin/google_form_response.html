@@ -1,0 +1,50 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}Google Form Responses - Admin Dashboard{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .response-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        text-align: center;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Google Form Responses</h2>
+    </div>
+</div>
+
+<!-- Response Types -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <a href="/admin/google-form/cda" class="response-card text-decoration-none text-dark">
+            <h5>CDA Requests</h5>
+            <p>View all CDA requests.</p>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/admin/google-form/contract" class="response-card text-decoration-none text-dark">
+            <h5>Contract Requests</h5>
+            <p>View all Contract requests.</p>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/admin/google-form/login" class="response-card text-decoration-none text-dark">
+            <h5>Login Requests</h5>
+            <p>View all Login requests.</p>
+        </a>
+    </div>
+</div>
+{% endblock %}

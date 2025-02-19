@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Submissions - WCM Employee Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .submission-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .info-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .info-section:last-child {
+            border-bottom: none;
+        }
+        .info-section h6 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+        }
+        .info-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: baseline;
+        }
+        .info-label {
+            font-weight: 500;
+            color: #34495e;
+            min-width: 150px;
+            margin-right: 10px;
+        }
+        .info-value {
+            color: #2c3e50;
+        }
+        .submission-header {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #3498db;
+        }
+        .submission-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/home">WCM Employee Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/onboarding">Onboarding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/closing-request">Request Closing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pda">PDA</a></li>
+                    <li class="nav-item "><a class="nav-link " href="/resources" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/room_scheduling">Conference Room</a></li>
+                    <li class="nav-item me-2 me-lg-2 me-md-2"><a class="btn btn-primary" href="/create-ticket">Create Ticket</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary" href="#">AI Chat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>PDA Submissions</h2>
+            <a href="/pda" class="btn btn-primary">New PDA</a>
+        </div>
+
+        {% if submissions %}
+            {% for submission in submissions %}
+                <div class="card submission-card">
+                    <div class="card-header submission-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Submission #{{ loop.index }}</h5>
+                            <span class="submission-date">{{ submission.submission_date }}</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Borrower Information -->
+                        <div class="info-section">
+                            <h6>Borrower Information</h6>
+                            <div class="info-item">
+                                <span class="info-label">Borrower Name:</span>
+                                <span class="info-value">{{ submission.borrower_info.name }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Loan Officer:</span>
+                                <span class="info-value">{{ submission.borrower_info.loan_officer }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Complete Drive:</span>
+                                <span class="info-value">{{ submission.borrower_info.complete_drive }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Lender Name:</span>
+                                <span class="info-value">{{ submission.borrower_info.lender_name }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Processor Information -->
+                        <div class="info-section">
+                            <h6>Processor Information</h6>
+                            <div class="info-item">
+                                <span class="info-label">Name:</span>
+                                <span class="info-value">{{ submission.processor_info.name }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">{{ submission.processor_info.phone }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">{{ submission.processor_info.email }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Escrow Information -->
+                        <div class="info-section">
+                            <h6>Escrow Information</h6>
+                            <div class="info-item">
+                                <span class="info-label">File Number:</span>
+                                <span class="info-value">{{ submission.escrow_info.file_number }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Company Name:</span>
+                                <span class="info-value">{{ submission.escrow_info.company_name }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">{{ submission.escrow_info.email }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">{{ submission.escrow_info.phone }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Title Information -->
+                        <div class="info-section">
+                            <h6>Title Information</h6>
+                            <div class="info-item">
+                                <span class="info-label">File Number:</span>
+                                <span class="info-value">{{ submission.title_info.file_number }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Company Name:</span>
+                                <span class="info-value">{{ submission.title_info.company_name }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">{{ submission.title_info.email }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">{{ submission.title_info.phone }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Information -->
+                        <div class="info-section">
+                            <h6>Payment Information</h6>
+                            <div class="info-item">
+                                <span class="info-label">Payout Amount:</span>
+                                <span class="info-value">{{ submission.payment_info.payout_amount }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Payee Name/LLC:</span>
+                                <span class="info-value">{{ submission.payment_info.payee_name }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Total Payout:</span>
+                                <span class="info-value">{{ submission.payment_info.total_payout }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Status Information -->
+<<<<<<< HEAD
+                <div class="info-section">
+                    <h6>Status Information</h6>
+                    <div class="info-item">
+                        <span class="info-label">Status:</span>
+                        <span class="info-value">
+                            {% if submission.status == 'pending' %}
+                                <span class="badge bg-warning">Pending</span>
+                            {% elif submission.status == 'approved' %}
+                                <span class="badge bg-success">Approved</span>
+                            {% elif submission.status == 'rejected' %}
+                                <span class="badge bg-danger">Rejected</span>
+                            {% else %}
+                                <span class="badge bg-secondary">{{ submission.status }}</span>
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Submission Date:</span>
+                        <span class="info-value">{{ submission.submission_date }}</span>
+                    </div>
+                    
+                </div>
+
+                </div>
+                    
+            </div>
+=======
+                        <div class="info-section">
+                            <h6>Status Information</h6>
+                            <div class="info-item">
+                                <span class="info-label">Status:</span>
+                                <span class="info-value">
+                                    {% if submission.status %}
+                                        <span class="badge {% if submission.status == 'accepted' %}bg-success
+                                                          {% elif submission.status == 'declined' %}bg-danger
+                                                          {% else %}bg-warning{% endif %}">
+                                            {{ submission.status|title }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-warning">Pending</span>
+                                    {% endif %}
+                                </span>
+                            </div>
+                            {% if submission.updated_at %}
+                            <div class="info-item">
+                                <span class="info-label">Last Updated:</span>
+                                <span class="info-value">{{ submission.updated_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+>>>>>>> master
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info">No PDA submissions found.</div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

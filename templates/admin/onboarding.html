@@ -1,0 +1,429 @@
+{% extends "admin/base_layout.html" %}
+
+<<<<<<< HEAD
+{% block title %}Onboarding - Admin Dashboard{% endblock %}
+=======
+{% block title %}Onboarding Status - Admin Dashboard{% endblock %}
+>>>>>>> master
+
+{% block extra_styles %}
+<style>
+    .onboarding-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .status-badge {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+<<<<<<< HEAD
+    }
+    .status-badge.pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+    .status-badge.completed {
+        background: #d4edda;
+        color: #155724;
+    }
+    .status-badge.in-progress {
+        background: #cce5ff;
+        color: #004085;
+    }
+    .checklist-item {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background: #f8f9fa;
+    }
+    .checklist-item i {
+        margin-right: 5px;
+    }
+    .completed {
+        color: #28a745;
+    }
+    .pending {
+        color: #ffc107;
+    }
+    .progress {
+        height: 5px;
+=======
+        display: inline-block;
+        margin: 2px;
+    }
+    .status-badge.true {
+        background: #d4edda;
+        color: #155724;
+    }
+    .status-badge.false {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    .info-row {
+        margin-bottom: 8px;
+    }
+    .info-label {
+        font-weight: 600;
+        color: #495057;
+    }
+    .timestamp {
+        font-size: 0.85rem;
+        color: #6c757d;
+>>>>>>> master
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+<<<<<<< HEAD
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-md-10 main-content">
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <h2>Employee Onboarding</h2>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search onboarding...">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add New Button -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <button class="btn btn-primary" onclick="showNewOnboardingForm()">
+                        <i class="bi bi-plus-circle"></i> New Onboarding
+                    </button>
+                </div>
+            </div>
+
+            <!-- Onboarding List -->
+            <div class="onboarding-list">
+                {% if records %}
+                    {% for record in records %}
+                    <div class="onboarding-card">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>{{ record.employee_name }}</h5>
+                                <p class="text-muted mb-1">
+                                    <i class="bi bi-envelope"></i> {{ record.email }}
+                                </p>
+                                <p class="text-muted mb-1">
+                                    <i class="bi bi-briefcase"></i> {{ record.position }}
+                                </p>
+                                <p class="text-muted mb-1">
+                                    <i class="bi bi-calendar"></i> Start Date: {{ record.start_date.strftime('%Y-%m-%d') if record.start_date else 'N/A' }}
+                                </p>
+                                
+                                <div class="progress mt-3 mb-2">
+                                    <div class="progress-bar" role="progressbar" style="width: {{ record.progress }}%"></div>
+                                </div>
+                                <small class="text-muted">{{ record.progress }}% Complete</small>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <span class="status-badge {{ record.status.lower().replace(' ', '-') if record.status else 'unknown' }}">
+                                        {{ record.status if record.status else 'Unknown' }}
+                                    </span>
+                                </div>
+                                <div class="checklist">
+                                    <div class="checklist-item">
+                                        <i class="bi {{ 'bi-check-circle-fill completed' if record.paperwork_completed else 'bi-circle pending' }}"></i>
+                                        Paperwork
+                                    </div>
+                                    <div class="checklist-item">
+                                        <i class="bi {{ 'bi-check-circle-fill completed' if record.equipment_setup else 'bi-circle pending' }}"></i>
+                                        Equipment Setup
+                                    </div>
+                                    <div class="checklist-item">
+                                        <i class="bi {{ 'bi-check-circle-fill completed' if record.access_granted else 'bi-circle pending' }}"></i>
+                                        System Access
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <button class="btn btn-outline-primary btn-sm mb-2" onclick="editOnboarding('{{ record._id }}')">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </button>
+                                <button class="btn btn-outline-success btn-sm" onclick="viewDetails('{{ record._id }}')">
+                                    <i class="bi bi-eye"></i> View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No Pending Onboarding Requests</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New/Edit Onboarding Modal -->
+<div class="modal fade" id="onboardingModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Onboarding</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="onboardingForm">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Employee Name</label>
+                            <input type="text" class="form-control" name="employee_name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Position</label>
+                            <input type="text" class="form-control" name="position" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" name="start_date" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Department</label>
+                            <input type="text" class="form-control" name="department" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Manager</label>
+                            <input type="text" class="form-control" name="manager" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-control" name="notes" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveOnboarding()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Onboarding Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function showNewOnboardingForm() {
+        document.getElementById('onboardingForm').reset();
+        const modal = new bootstrap.Modal(document.getElementById('onboardingModal'));
+        modal.show();
+    }
+
+    function editOnboarding(id) {
+        fetch(`/admin/onboarding/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                const form = document.getElementById('onboardingForm');
+                for (let key in data) {
+                    if (form.elements[key]) {
+                        form.elements[key].value = data[key];
+                    }
+                }
+                const modal = new bootstrap.Modal(document.getElementById('onboardingModal'));
+                modal.show();
+            });
+    }
+
+    function saveOnboarding() {
+        const formData = new FormData(document.getElementById('onboardingForm'));
+        const data = Object.fromEntries(formData.entries());
+        
+        fetch('/admin/onboarding/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Error saving onboarding');
+            }
+        });
+    }
+
+    function viewDetails(id) {
+        fetch(`/admin/onboarding/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                const modal = new bootstrap.Modal(document.getElementById('detailsModal'));
+                document.getElementById('modalContent').innerHTML = `
+                    <div class="container-fluid">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <strong>Name:</strong> ${data.employee_name}
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Email:</strong> ${data.email}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <strong>Position:</strong> ${data.position}
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Department:</strong> ${data.department}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <strong>Start Date:</strong> ${data.start_date}
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Manager:</strong> ${data.manager}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <strong>Notes:</strong>
+                                <p>${data.notes || 'No notes available'}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                modal.show();
+            });
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.onboarding-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+=======
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h2>Onboarding Status</h2>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search entries...">
+                <button class="btn btn-outline-secondary" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Onboarding List -->
+    <div class="onboarding-list">
+        {% if onboarding_entries %}
+            {% for entry in onboarding_entries %}
+            <div class="onboarding-card" data-entry-id="{{ entry._id }}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5 class="mb-0">Employee ID: {{ entry.user_id }}</h5>
+                            <div class="timestamp">
+                                Created: {{ entry.created_at }}<br>
+                                Updated: {{ entry.updated_at }}
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="info-row">
+                                    <span class="info-label">W9 Completed:</span>
+                                    <span class="status-badge {{ entry.w9_completed|string|lower }}">
+                                        {{ entry.w9_completed|string|title }}
+                                    </span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">ID Completed:</span>
+                                    <span class="status-badge {{ entry.id_completed|string|lower }}">
+                                        {{ entry.id_completed|string|title }}
+                                    </span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Contract Completed:</span>
+                                    <span class="status-badge {{ entry.contract_completed|string|lower }}">
+                                        {{ entry.contract_completed|string|title }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-row">
+                                    <span class="info-label">Sign Completed:</span>
+                                    <span class="status-badge {{ entry.sign_completed|string|lower }}">
+                                        {{ entry.sign_completed|string|title }}
+                                    </span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">License Completed:</span>
+                                    <span class="status-badge {{ entry.license_completed|string|lower }}">
+                                        {{ entry.license_completed|string|title }}
+                                    </span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Login Completed:</span>
+                                    <span class="status-badge {{ entry.login_completed|string|lower }}">
+                                        {{ entry.login_completed|string|title }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No onboarding entries found</p>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+// Search functionality
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    document.querySelectorAll('.onboarding-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(searchTerm) ? '' : 'none';
+    });
+});
+>>>>>>> master
+</script>
+{% endblock %}

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Western Capital Mortgage - Resources</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resources.css') }}">
+    <style>
+        .resource-section {
+            margin-bottom: 2rem;
+        }
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+        .search-input {
+            border-radius: 20px;
+            padding: 0.75rem 2.5rem;
+            font-size: 1rem;
+            width: 100%;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+        }
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        .resource-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .resource-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .resource-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .resource-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .view-resource-btn {
+            border-radius: 20px;
+            padding: 0.375rem 1.5rem;
+        }
+        .page-title {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .page-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .resource-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        mark {
+            background-color: #fff3cd;
+            padding: 0.1em 0.2em;
+            border-radius: 2px;
+        }
+        .resource-card.hidden {
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            position: absolute;
+        }
+        #noResultsMessage {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<<<<<<< HEAD
+<body>
+=======
+<body>  
+    
+>>>>>>> master
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-weight: bold;">Western Capital Mortgage</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/onboarding">Onboarding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/closing-request">Request Closing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pda">PDA</a></li>
+<<<<<<< HEAD
+=======
+                    <li class="nav-item"><a class="nav-link" href="/cda">CDA</a></li>
+>>>>>>> master
+                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/room_scheduling">Conference Room</a></li>
+                    <li class="nav-item"><a class="btn btn-primary me-2" href="/create-ticket">Create Ticket</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0" href="#">AI Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/logout" onclick="return confirm('Are you sure you want to logout?')">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h1 class="page-title mt-4">Resources</h1>
+        <p class="page-subtitle">Access Essential Lending Documents & Tools</p>
+
+        <div class="search-container">
+            <input type="text" class="form-control search-input" id="searchResources" placeholder="Search resources...">
+        </div>
+
+        <div class="row p-5" id="resourcesGrid">
+            <!-- Lenders List -->
+            <div class="col-md-4  resource-card">
+                <div class="resource-title">Lenders List</div>
+                <div class="resource-description">Comprehensive directory of approved lenders and their contact information</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://docs.google.com/spreadsheets/d/1TTywUE2n1TyreSBxY4hw2rTFhbA5s1_eYFfsRkzIA3g/edit?usp=sharing">View Resource</a></button>
+            </div>
+
+            <!-- Borrower's Authorization -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Borrower's Authorization</div>
+                <div class="resource-description">Standard authorization form for borrowers to grant access to their information</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://drive.google.com/file/d/1c3YE5V-yUm08QNhrsJs0Apc6vmXmiw9s/view?usp=sharing">View Resource</a></button>
+            </div>
+
+            <!-- Credit Pull Authorization -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Credit Pull Authorization</div>
+                <div class="resource-description">Form for obtaining permission to access credit information</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://drive.google.com/file/d/1O-PZXk8P0zKtpkzpiBf-nqQuaMEfaDWV/view?usp=sharing">View Resource</a></button>
+            </div>
+
+            <!-- Credit Card Form -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Credit Card Form</div>
+                <div class="resource-description">Secure form for processing credit card payments and transactions</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://drive.google.com/file/d/1-pt0tvk-HHaFzrBV0dzwPfE29Tqlecc2/view?usp=sharing">View Resource</a></button>
+            </div>
+
+            <!-- LP Instructions -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">LP Instructions</div>
+                <div class="resource-description">Detailed guide for loan processing procedures and requirements</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://docs.google.com/document/d/1H-m4WPHY-iFBaKXhbiOlxTtgqCoROPAGPfpwpG41ncU/edit?tab=t.0">View Resource</a></button>
+            </div>
+
+            <!-- DU Instructions -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">DU Instructions</div>
+                <div class="resource-description">Step by step guide for Desktop Underwriter system usage</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://docs.google.com/document/d/1OnTGXSSgxqAq6LAJOBMruOYOZhBYPlcjw1P7-XzF7dY/edit?tab=t.0">View Resource</a></button>
+            </div>
+
+            <!-- Tax Transcripts Instructions -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Tax Transcripts Instructions</div>
+                <div class="resource-description">Guide for ordering and processing tax transcript requests</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://drive.google.com/file/d/1hYV0q-yQVszi2zCW7Qtqg9O05mm_ZKRB/view?usp=sharing">View Resource</a></button>
+            </div>
+
+            <!-- Borrowers Checklist -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Borrowers Checklist</div>
+                <div class="resource-description">Complete checklist of required documents and steps for borrowers</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://drive.google.com/file/d/13b70t4U0DSX8SBpHJuTkIc0FQ4nyP3bR/view?usp=sharing">View Resource</a></button>
+            </div>
+
+            <!-- Pre-Approval Letter -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Pre-Approval Letter</div>
+                <div class="resource-description">Template for generating pre-approval letters for qualified borrowers</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://drive.google.com/file/d/1gZWZ5chDiLGxOmOTyW7eNmNTMP8q7aoc/view?usp=sharing">View Resource</a></button>
+            </div>
+
+            <!-- Salary Key Guide -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Salary Key Guide</div>
+                <div class="resource-description">Instructions for retrieving and using salary verification keys</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://docs.google.com/document/d/1GcikYPIpYdpkqc4Ofxen6PZKvst5a5FA1qkidBKGKCw/edit?tab=t.0">View Resource</a></button>
+            </div>
+
+            <!-- New URLA Form -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">New URLA Form</div>
+                <div class="resource-description">Updated Uniform Residential Loan Application form (fillable PDF)</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://drive.google.com/file/d/1XCiFpAHoNEfYrpiW6asTXxkyUpDrTA4n/view?usp=sharing">View Resource</a></button>
+            </div>
+
+            <!-- Income Calculator -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Income Calculator</div>
+                <div class="resource-description">Tool for calculating and verifying borrower income qualification</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://docs.google.com/spreadsheets/d/1yGNkBEkw-zWC6uWroxgCjGnr0ONaQHHZ/edit?rtpof=true&gid=188505215#gid=188505215">View Resource</a></button>
+            </div>
+
+            <!-- VOE Guide -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">VOE Guide</div>
+                <div class="resource-description">Instructions for pulling Verification of Employment through VOE</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://drive.google.com/drive/folders/1uGroliT5sFeMNConFIcODs_-DxbmDCPZ">View Resource</a></button>
+            </div>
+
+            <!-- Income Limits -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Income Limits</div>
+                <div class="resource-description">Current income threshold guidelines and qualification criteria</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="https://docs.google.com/document/d/1o1-N-8RRW2C1GTyTdWXfHaJlLb8oU_2jzcAY35-kSOI/edit?tab=t.0">View Resource</a></button>
+            </div>
+
+            <!-- Other Resources -->
+            <div class="col-md-4 resource-card">
+                <div class="resource-title">Other Resources</div>
+                <div class="resource-description">Additional helpful tools and documents</div>
+                <button class="btn btn-primary view-resource-btn"><a style="text-decoration: none; color:white;" href="">View Resource</a></button>
+            </div>
+        </div>
+    </div>
+
+
+    
+<!-- Footer -->
+<div class="form-footer mt-5">
+    <div class="container">
+        <div class="row text-white py-4">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+                <p class="mb-0">Forward-thinking mortgage solutions for a dynamic future.</p>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/home" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="/onboarding" class="text-white text-decoration-none">Onboarding</a></li>
+                    <li><a href="/closing-request" class="text-white text-decoration-none">Request Closing</a></li>
+                    <li><a href="/faq" class="text-white text-decoration-none">FAQs</a></li>
+                    <li><a href="/pda" class="text-white text-decoration-none">PDA</a></li>
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Resources</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/room_scheduling" class="text-white text-decoration-none">Conference Rooms</a></li>
+                    <li><a href="/create-ticket" class="text-white text-decoration-none">Create Ticket</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">AI Chat</a></li>
+                </ul>
+            </div>
+            <!-- Column 4 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Connect With Us</h6>
+                <div>
+                    <!-- <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a> -->
+                    <a href="https://www.zillow.com/lender-profile/WesternCapitalMortgage/" class="text-white"><img src="../static/img/zillow reviews.png" alt="linkedin" style="width: 30px; height: 30px; color: white;"></a>
+                </div>
+            </div>
+        </div>
+        <hr class="border-light">
+        <div class="text-center text-white">
+            &copy; 2024 | WEBA. All rights reserved. Created by Codecis AI
+        </div>
+    </div>
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchResources');
+            const resourceCards = document.querySelectorAll('.resource-card');
+            let debounceTimer;
+
+            // Function to highlight matching text
+            function highlightText(text, searchTerm) {
+                if (!searchTerm) return text;
+                const regex = new RegExp(`(${searchTerm})`, 'gi');
+                return text.replace(regex, '<mark>$1</mark>');
+            }
+
+            // Function to perform search
+            function performSearch(searchTerm) {
+                searchTerm = searchTerm.toLowerCase().trim();
+                let hasResults = false;
+
+                resourceCards.forEach(card => {
+                    const title = card.querySelector('.resource-title').textContent.toLowerCase();
+                    const description = card.querySelector('.resource-description').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        // Show card and highlight matching text
+                        card.classList.remove('hidden');
+                        if (searchTerm) {
+                            card.querySelector('.resource-title').innerHTML = 
+                                highlightText(card.querySelector('.resource-title').textContent, searchTerm);
+                            card.querySelector('.resource-description').innerHTML = 
+                                highlightText(card.querySelector('.resource-description').textContent, searchTerm);
+                        }
+                        hasResults = true;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                // Show/hide no results message
+                const noResultsMsg = document.getElementById('noResultsMessage');
+                if (!hasResults && searchTerm) {
+                    if (!noResultsMsg) {
+                        const msg = document.createElement('div');
+                        msg.id = 'noResultsMessage';
+                        msg.className = 'alert alert-info text-center mt-4';
+                        msg.innerHTML = `
+                            <i class="bi bi-search me-2"></i>
+                            No resources found matching "${searchTerm}"
+                            <button class="btn btn-link" onclick="clearSearch()">Clear Search</button>
+                        `;
+                        document.getElementById('resourcesGrid').before(msg);
+                    }
+                } else if (noResultsMsg) {
+                    noResultsMsg.remove();
+                }
+            }
+
+            // Search input event listener with debouncing
+            searchInput.addEventListener('input', function(e) {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    performSearch(e.target.value);
+                }, 300); // 300ms debounce delay
+            });
+
+            // Clear search function
+            window.clearSearch = function() {
+                searchInput.value = '';
+                performSearch('');
+                searchInput.focus();
+            }
+
+            // Add keyboard shortcut (Ctrl/Cmd + K) to focus search
+            document.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+                // Press Escape to clear search
+                if (e.key === 'Escape' && document.activeElement === searchInput) {
+                    clearSearch();
+                }
+            });
+
+            // Initialize tooltips
+            const searchTooltip = document.createElement('div');
+            searchTooltip.className = 'text-muted small text-center mt-1';
+            searchTooltip.innerHTML = 'Press Ctrl + K to search, Esc to clear';
+            searchInput.parentNode.appendChild(searchTooltip);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}CDA Requests{% endblock %}
+
+{% block content %}
+<h1>CDA Requests</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Requestor</th>
+            <th>Created At</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in cda_requests %}
+        <tr>
+            <td>{{ request._id }}</td>
+            <td>{{ request.requestor }}</td>
+            <td>{{ request.created_at }}</td>
+            <td>{{ request.status }}</td>
+            <td>
+                <!-- Add any actions you need here -->
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

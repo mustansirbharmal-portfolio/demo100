@@ -1,0 +1,122 @@
+{% extends "admin/google_form_layout.html" %}
+
+{% block title %}PDA Requests{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .response-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>PDA Requests</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search requests...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Requests List -->
+<div class="responses-list">
+    {% if analysis %}
+        {% for request in analysis %}
+        <div class="response-card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ request.form_name }}</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-person"></i> {{ request.user_name }}
+                        <span class="ms-3"><i class="bi bi-clock"></i> {{ request.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+                    </p>
+                    <p class="mb-3">{{ request.description }}</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{{ request.link }}" target="_blank" class="btn btn-primary btn-sm">
+                        <i class="bi bi-eye"></i> View Request
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No PDA requests available.</h3>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block viewdetailmodal %}
+<dl class="row">
+    <dt class="col-sm-4">Timestamp</dt>
+    <dd class="col-sm-8" id="modalTimestamp"></dd>
+
+    <dt class="col-sm-4">Borrower's Name</dt>
+    <dd class="col-sm-8" id="modalBorrowersName"></dd>
+
+    <dt class="col-sm-4">Loan Officer</dt>
+    <dd class="col-sm-8" id="modalLoanOfficer"></dd>
+
+    <dt class="col-sm-4">Complete Drive</dt>
+    <dd class="col-sm-8" id="modalCompleteDrive"></dd>
+
+    <dt class="col-sm-4">Lender Name</dt>
+    <dd class="col-sm-8" id="modalLenderName"></dd>
+
+    <dt class="col-sm-4">Payout</dt>
+    <dd class="col-sm-8" id="modalPayout"></dd>
+
+    <dt class="col-sm-4">Payee Name/LLC</dt>
+    <dd class="col-sm-8" id="modalPayeeNameLLC"></dd>
+
+    <dt class="col-sm-4">Total Payout</dt>
+    <dd class="col-sm-8" id="modalTotalPayout"></dd>
+
+    <dt class="col-sm-4">Processor Signature</dt>
+    <dd class="col-sm-8" id="modalProcessorSignature"></dd>
+
+    <dt class="col-sm-4">Processor Signature Date</dt>
+    <dd class="col-sm-8" id="modalProcessorSignatureDate"></dd>
+
+    <dt class="col-sm-4">Manager Signature</dt>
+    <dd class="col-sm-8" id="modalManagerSignature"></dd>
+
+    <dt class="col-sm-4">Manager Signature Date</dt>
+    <dd class="col-sm-8" id="modalManagerSignatureDate"></dd>
+</dl>
+{% endblock %}
+
+
+
+{% block viewresponsescript %}
+<script>
+    document.getElementById('viewResponseModal').addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var response = JSON.parse(button.getAttribute('data-response'));
+
+        document.getElementById('modalTimestamp').textContent = response['Timestamp'];
+        document.getElementById('modalBorrowersName').textContent = response['Borrower\'s Name'];
+        document.getElementById('modalLoanOfficer').textContent = response['Loan Officer'];
+        document.getElementById('modalCompleteDrive').textContent = response['Complete Drive'];
+        document.getElementById('modalLenderName').textContent = response['Lender Name'];
+        document.getElementById('modalPayout').textContent = response['Payout'];
+        document.getElementById('modalPayeeNameLLC').textContent = response['Payee Name/LLC'];
+        document.getElementById('modalTotalPayout').textContent = response['Total Payout'];
+        document.getElementById('modalProcessorSignature').textContent = response['Processor Signature'];
+        document.getElementById('modalProcessorSignatureDate').textContent = response['Processor Signature Date'];
+        document.getElementById('modalManagerSignature').textContent = response['Manager Signature'];
+        document.getElementById('modalManagerSignatureDate').textContent = response['Manager Signature Date'];
+    });
+</script>
+{% endblock %}

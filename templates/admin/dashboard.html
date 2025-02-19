@@ -1,0 +1,138 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}Admin Dashboard - WCM{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .stats-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .stats-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #007bff;
+    }
+    .activity-item {
+        padding: 15px;
+        border-bottom: 1px solid #dee2e6;
+    }
+    .activity-item:last-child {
+        border-bottom: none;
+    }
+    .activity-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+    }
+    .activity-icon.blue {
+        background: #e7f1ff;
+        color: #007bff;
+    }
+    .activity-icon.green {
+        background: #d4edda;
+        color: #28a745;
+    }
+    .quick-actions .btn {
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: left;
+        padding: 12px;
+    }
+    .chart-container {
+        height: 200px;
+        margin-top: 20px;
+    }
+
+    
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Dashboard</h2>
+    </div>
+    
+</div>
+
+<!-- Stats Row -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="stats-card">
+            <div class="stats-title">Pending Tasks</div>
+            <div class="stats-number">{{ total_pending }}</div>
+            <div class="stats-details">
+                {% for task in pending_tasks %}
+                <div class="task-type">
+                    {{ task.type }}: {{ task.count }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stats-card">
+            <div class="stats-number">{{ documents_count }}</div>
+            <div class="text-muted">Documents</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="stats-card">
+            <div class="stats-number">{{ meetings_count }}</div>
+            <div class="text-muted">Scheduled Meetings</div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Row -->
+<div class="row">
+    <!-- Recent Activities -->
+    <div class="col-md-8">
+        <div class="stats-card">
+            <h5 class="mb-4">Recent Activities</h5>
+            {% for activity in recent_activities %}
+            <div class="activity-item d-flex align-items-center">
+                <div class="activity-icon {{ activity.icon_class }}">
+                    <i class="bi {{ activity.icon }}"></i>
+                </div>
+                <div>
+                    <div class="fw-bold">{{ activity.title }}</div>
+                    <div class="text-muted small">{{ activity.description }}</div>
+                    <div class="text-muted small">{{ activity.time_ago }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="col-md-4">
+        <div class="stats-card">
+            <h5 class="mb-4">Quick Actions</h5>
+            <div class="quick-actions">
+                <a href="/admin/tickets/new" class="btn btn-outline-primary">
+                    <i class="bi bi-plus-circle"></i> View New Tickets
+                </a>
+                <a href="/admin/pda/submissions" class="btn btn-outline-primary">
+                    <i class="bi bi-file-text"></i> Review PDA Submissions
+                </a>
+                <a href="/admin/closing-requests" class="btn btn-outline-primary">
+                    <i class="bi bi-box-arrow-right"></i> View Closing Requests
+                </a>
+                <a href="/admin/onboarding" class="btn btn-outline-primary">
+                    <i class="bi bi-person-plus"></i> New Onboarding
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

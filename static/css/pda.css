@@ -1,0 +1,227 @@
+<<<<<<< HEAD
+/* Main container styles */
+body {
+    background-color: #f9fafc;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.pda-container {
+    padding: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/* Header styles */
+.pda-header {
+    margin-bottom: 2rem;
+}
+
+.pda-header h1 {
+    color: #111827;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Form styles */
+.pda-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+.form-control {
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: #0aa1ed;
+    box-shadow: 0 0 0 2px rgba(10, 161, 237, 0.1);
+}
+
+/* Button styles */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #0aa1ed;
+    border-color: #0aa1ed;
+}
+
+.btn-primary:hover {
+    background-color: #0991d4;
+    border-color: #0991d4;
+}
+
+.btn-outline-secondary {
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pda-container {
+        padding: 1rem;
+    }
+    
+    .pda-form {
+        padding: 1.5rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+=======
+/* Main container styles */
+body {
+    background-color: #f9fafc;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.pda-container {
+    padding: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/* Header styles */
+.pda-header {
+    margin-bottom: 2rem;
+}
+
+.pda-header h1 {
+    color: #111827;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Form styles */
+.pda-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+.form-control {
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: #0aa1ed;
+    box-shadow: 0 0 0 2px rgba(10, 161, 237, 0.1);
+}
+
+/* Button styles */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #0aa1ed;
+    border-color: #0aa1ed;
+}
+
+.btn-primary:hover {
+    background-color: #0991d4;
+    border-color: #0991d4;
+}
+
+.btn-outline-secondary {
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pda-container {
+        padding: 1rem;
+    }
+    
+    .pda-form {
+        padding: 1.5rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+>>>>>>> master

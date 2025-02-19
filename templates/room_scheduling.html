@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Room Scheduling - WCM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .room-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            height: 100%;
+        }
+        .room-feature {
+            margin-bottom: 10px;
+        }
+        .room-feature i {
+            color: #198754;
+            margin-right: 8px;
+        }
+        .schedule-btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<<<<<<< HEAD
+    <!-- Navigation Bar -->
+=======
+    
+    <!-- Navbar -->
+>>>>>>> master
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-weight: bold;">Western Capital Mortgage</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/onboarding">Onboarding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/closing-request">Request Closing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pda">PDA</a></li>
+<<<<<<< HEAD
+=======
+                    <li class="nav-item"><a class="nav-link" href="/cda">CDA</a></li>
+>>>>>>> master
+                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/room_scheduling">Conference Room</a></li>
+                    <li class="nav-item"><a class="btn btn-primary me-2" href="/create-ticket">Create Ticket</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0" href="#">AI Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/logout" onclick="return confirm('Are you sure you want to logout?')">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Conference Room -->
+            <div class="col-md-6">
+                <div class="room-card">
+                    <h4 class="mb-3">Main Conference Room</h4>
+                    <p class="text-muted">Schedule a meeting in our upstairs conference room.</p>
+                    
+                    <div class="room-features">
+                        <div class="room-feature">
+                            <i class="bi bi-projector"></i>
+                            Projector Available
+                        </div>
+                        <div class="room-feature">
+                            <i class="bi bi-camera-video"></i>
+                            Video Conference Setup
+                        </div>
+                        <div class="room-feature">
+                            <i class="bi bi-people"></i>
+                            Seats up to 10 people
+                        </div>
+                    </div>
+
+                    <a href="{{ rooms['upstairs']['url'] }}" 
+                       class="btn btn-primary schedule-btn" 
+                       target="_blank">
+                        <i class="bi bi-calendar-plus"></i>
+                        Schedule Upstairs Room
+                    </a>
+                </div>
+            </div>
+
+            <!-- Downstairs Conference Room -->
+            <div class="col-md-6">
+                <div class="room-card">
+                    <h4 class="mb-3">Downstairs Conference Room</h4>
+                    <p class="text-muted">Schedule a meeting in our downstairs conference room.</p>
+                    
+                    <div class="room-features">
+                        <div class="room-feature">
+                            <i class="bi bi-tv"></i>
+                            Smart TV Available
+                        </div>
+                        <div class="room-feature">
+                            <i class="bi bi-camera-video"></i>
+                            Video Conference Setup
+                        </div>
+                        <div class="room-feature">
+                            <i class="bi bi-people"></i>
+                            Seats up to 8 people
+                        </div>
+                    </div>
+
+                    <a href="{{ rooms['downstairs']['url'] }}" 
+                       class="btn btn-primary schedule-btn" 
+                       target="_blank">
+                        <i class="bi bi-calendar-plus"></i>
+                        Schedule Downstairs Room
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Room Guidelines -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Room Booking Guidelines</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle text-success"></i> Book at least 24 hours in advance</li>
+                            <li><i class="bi bi-check-circle text-success"></i> Maximum booking duration: 2 hours</li>
+                            <li><i class="bi bi-check-circle text-success"></i> Clean the room after use</li>
+                            <li><i class="bi bi-check-circle text-success"></i> Report any technical issues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

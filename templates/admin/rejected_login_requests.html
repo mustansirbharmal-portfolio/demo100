@@ -1,0 +1,129 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}Rejected Login Requests - Admin Dashboard{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .request-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .status-badge {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    .status-badge.rejected {
+        background: #f8d7da;
+        color: #721c24;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Rejected Login Requests</h2>
+    </div>
+    <div class="col-md-4 d-flex justify-content-end">
+        <div class="input-group me-2">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search requests...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+        <a href="/admin/login-requests" class="btn btn-secondary">Back to Login Requests</a>
+    </div>
+</div>
+
+<!-- Requests List -->
+<div class="requests-list">
+    {% if rejected_requests %}
+        {% for request in rejected_requests %}
+        <div class="request-card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ request.user_name }}</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-envelope"></i> {{ request.email }}
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-clock"></i> Submitted: {{ request.created_at.strftime('%Y-%m-%d %H:%M:%S') if request.created_at else 'N/A' }}
+                    </p>
+                    <p class="mb-3">{{ request.description }}</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="mb-2">
+                        <span class="status-badge rejected">
+                            Rejected
+                        </span>
+                    </div>
+                    <button class="btn btn-primary btn-sm mb-2" onclick="viewDetails('{{ request._id }}')">
+                        <i class="bi bi-eye"></i> View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No rejected login requests available.</h3>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function viewDetails(requestId) {
+        fetch(`/admin/onboarding-requests/${requestId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const modalBody = document.getElementById('modalBody');
+                    modalBody.innerHTML = `
+                        <table class="table">
+                            <tr><th>Name</th><td>${data.user_name}</td></tr>
+                            <tr><th>Email</th><td>${data.email}</td></tr>
+                            <tr><th>Description</th><td>${data.description}</td></tr>
+                            <tr><th>Submitted At</th><td>${data.created_at}</td></tr>
+                            <tr><th>Status</th><td>${data.status}</td></tr>
+                        </table>
+                    `;
+                    const detailsModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+                    detailsModal.show();
+                } else {
+                    alert('Error fetching details');
+                }
+            });
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.request-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Employee Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

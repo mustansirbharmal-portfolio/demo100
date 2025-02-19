@@ -1,0 +1,93 @@
+{% extends "admin/google_form_layout.html" %}
+
+{% block title %}Login Requests{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .response-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Login Requests</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search requests...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Requests List -->
+<div class="responses-list">
+    {% if login_requests %}
+        {% for request in login_requests %}
+        <div class="response-card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ request.form_name }}</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-person"></i> {{ request.user_name }}
+                        <span class="ms-3"><i class="bi bi-clock"></i> {{ request.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+                    </p>
+                    <p class="mb-3">{{ request.description }}</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{{ request.link }}" target="_blank" class="btn btn-primary btn-sm">
+                        <i class="bi bi-eye"></i> View Request
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No login requests available.</h3>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block viewdetailmodal %}
+<dl class="row">
+    <dt class="col-sm-4">Timestamp</dt>
+    <dd class="col-sm-8" id="modalTimestamp"></dd>
+
+    <dt class="col-sm-4">Logins List</dt>
+    <dd class="col-sm-8" id="modalLoginsList"></dd>
+</dl>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.response-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+</script>
+{% endblock %}
+
+{% block viewresponsescript %}
+<script>
+    document.getElementById('viewResponseModal').addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var response = JSON.parse(button.getAttribute('data-response'));
+
+        document.getElementById('modalTimestamp').textContent = response['Timestamp'];
+        document.getElementById('modalLoginsList').textContent = response['Please provide a list of all the logins necessary to start working on the files.'];
+    });
+</script>
+{% endblock %}

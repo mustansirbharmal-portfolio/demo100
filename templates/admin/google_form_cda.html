@@ -1,0 +1,240 @@
+{% extends "admin/google_form_layout.html" %}
+
+{% block title %}CDA Requests{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .response-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .modal-content {
+        border-radius: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>CDA Requests</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search requests...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Requests List -->
+<div class="responses-list">
+    {% if cda_requests %}
+        {% for response in cda_requests %}
+        <div class="response-card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ response['First & Last Name'] }}</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-envelope"></i> {{ response['Email Address?'] }}
+                        {% if response['Timestamp'] %}
+                        <span class="ms-3"><i class="bi bi-clock"></i> {{ response['Timestamp'] }}</span>
+                        {% endif %}
+                    </p>
+                    <p class="mb-3">{{ response['Preferred Processor contact info'] }}</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewResponseModal" data-response="{{ response|escape }}">
+                        <i class="bi bi-eye"></i> View Response
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No CDA requests available.</h3>
+    {% endif %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="viewResponseModal" tabindex="-1" aria-labelledby="viewResponseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewResponseModalLabel">View Response</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% block viewdetailmodal %}
+                <dl class="row">
+                    <dt class="col-sm-4">Timestamp</dt>
+                    <dd class="col-sm-8" id="modalTimestamp"></dd>
+
+                    <dt class="col-sm-4">Email</dt>
+                    <dd class="col-sm-8" id="modalEmail"></dd>
+
+                    <dt class="col-sm-4">Borrower's Name</dt>
+                    <dd class="col-sm-8" id="modalBorrowersName"></dd>
+
+                    <dt class="col-sm-4">Co-Borrowers Name</dt>
+                    <dd class="col-sm-8" id="modalCoBorrowersName"></dd>
+
+                    <dt class="col-sm-4">Property Address</dt>
+                    <dd class="col-sm-8" id="modalPropertyAddress"></dd>
+
+                    <dt class="col-sm-4">Property City</dt>
+                    <dd class="col-sm-8" id="modalPropertyCity"></dd>
+
+                    <dt class="col-sm-4">Property State</dt>
+                    <dd class="col-sm-8" id="modalPropertyState"></dd>
+
+                    <dt class="col-sm-4">Property ZIP</dt>
+                    <dd class="col-sm-8" id="modalPropertyZIP"></dd>
+
+                    <dt class="col-sm-4">Sales Price</dt>
+                    <dd class="col-sm-8" id="modalSalesPrice"></dd>
+
+                    <dt class="col-sm-4">Loan Amount</dt>
+                    <dd class="col-sm-8" id="modalLoanAmount"></dd>
+
+                    <dt class="col-sm-4">Loan Type</dt>
+                    <dd class="col-sm-8" id="modalLoanType"></dd>
+
+                    <dt class="col-sm-4">Loan Program</dt>
+                    <dd class="col-sm-8" id="modalLoanProgram"></dd>
+
+                    <dt class="col-sm-4">Lender</dt>
+                    <dd class="col-sm-8" id="modalLender"></dd>
+
+                    <dt class="col-sm-4">Rate</dt>
+                    <dd class="col-sm-8" id="modalRate"></dd>
+
+                    <dt class="col-sm-4">Loan Officer</dt>
+                    <dd class="col-sm-8" id="modalLoanOfficer"></dd>
+
+                    <dt class="col-sm-4">LO Email</dt>
+                    <dd class="col-sm-8" id="modalLOEmail"></dd>
+
+                    <dt class="col-sm-4">Processor</dt>
+                    <dd class="col-sm-8" id="modalProcessor"></dd>
+
+                    <dt class="col-sm-4">Closing Date</dt>
+                    <dd class="col-sm-8" id="modalClosingDate"></dd>
+
+                    <dt class="col-sm-4">Origination</dt>
+                    <dd class="col-sm-8" id="modalOrigination"></dd>
+
+                    <dt class="col-sm-4">House Split</dt>
+                    <dd class="col-sm-8" id="modalHouseSplit"></dd>
+
+                    <dt class="col-sm-4">LO Split</dt>
+                    <dd class="col-sm-8" id="modalLOSplit"></dd>
+
+                    <dt class="col-sm-4">Processing Fee</dt>
+                    <dd class="col-sm-8" id="modalProcessingFee"></dd>
+
+                    <dt class="col-sm-4">Processing Fee Amount</dt>
+                    <dd class="col-sm-8" id="modalProcessingFeeAmount"></dd>
+
+                    <dt class="col-sm-4">Credit Report Amount</dt>
+                    <dd class="col-sm-8" id="modalCreditReportAmount"></dd>
+
+                    <dt class="col-sm-4">Appraisal Fee</dt>
+                    <dd class="col-sm-8" id="modalAppraisalFee"></dd>
+
+                    <dt class="col-sm-4">VOE Fee</dt>
+                    <dd class="col-sm-8" id="modalVOEFee"></dd>
+
+                    <dt class="col-sm-4">VOE Amount</dt>
+                    <dd class="col-sm-8" id="modalVOEAmount"></dd>
+
+                    <dt class="col-sm-4">Payee Name</dt>
+                    <dd class="col-sm-8" id="modalPayeeName"></dd>
+
+                    <dt class="col-sm-4">Other Payees</dt>
+                    <dd class="col-sm-8" id="modalOtherPayees"></dd>
+
+                    <dt class="col-sm-4">Total Payout</dt>
+                    <dd class="col-sm-8" id="modalTotalPayout"></dd>
+
+                    <dt class="col-sm-4">Sent By</dt>
+                    <dd class="col-sm-8" id="modalSentBy"></dd>
+
+                    <dt class="col-sm-4">LO Date Sent</dt>
+                    <dd class="col-sm-8" id="modalLODateSent"></dd>
+
+                    <dt class="col-sm-4">Rate the Lender</dt>
+                    <dd class="col-sm-8" id="modalRateTheLender"></dd>
+
+                    <dt class="col-sm-4">Days to Close</dt>
+                    <dd class="col-sm-8" id="modalDaysToClose"></dd>
+
+                    <dt class="col-sm-4">Number of Closings for the Month</dt>
+                    <dd class="col-sm-8" id="modalNumberOfClosings"></dd>
+                </dl>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.response-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+
+    // Modal functionality
+    document.getElementById('viewResponseModal').addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var response = JSON.parse(button.getAttribute('data-response'));
+
+        document.getElementById('modalTimestamp').textContent = response['Timestamp'];
+        document.getElementById('modalEmail').textContent = response['Email'];
+        document.getElementById('modalBorrowersName').textContent = response['Borrower\'s Name'];
+        document.getElementById('modalCoBorrowersName').textContent = response['Co-Borrowers Name'];
+        document.getElementById('modalPropertyAddress').textContent = response['Property Address'];
+        document.getElementById('modalPropertyCity').textContent = response['Property City'];
+        document.getElementById('modalPropertyState').textContent = response['Property State'];
+        document.getElementById('modalPropertyZIP').textContent = response['Property ZIP'];
+        document.getElementById('modalSalesPrice').textContent = response['Sales Price'];
+        document.getElementById('modalLoanAmount').textContent = response['Loan Amount'];
+        document.getElementById('modalLoanType').textContent = response['Loan Type'];
+        document.getElementById('modalLoanProgram').textContent = response['Loan Program'];
+        document.getElementById('modalLender').textContent = response['Lender'];
+        document.getElementById('modalRate').textContent = response['Rate'];
+        document.getElementById('modalLoanOfficer').textContent = response['Loan Officer'];
+        document.getElementById('modalLOEmail').textContent = response['LO Email'];
+        document.getElementById('modalProcessor').textContent = response['Processor'];
+        document.getElementById('modalClosingDate').textContent = response['Closing Date'];
+        document.getElementById('modalOrigination').textContent = response['Origination'];
+        document.getElementById('modalHouseSplit').textContent = response['House Split'];
+        document.getElementById('modalLOSplit').textContent = response['LO Split'];
+        document.getElementById('modalProcessingFee').textContent = response['Processing fee'];
+        document.getElementById('modalProcessingFeeAmount').textContent = response['Processing Fee Amount'];
+        document.getElementById('modalCreditReportAmount').textContent = response['Credit Report Amount'];
+        document.getElementById('modalAppraisalFee').textContent = response['Appraisal Fee'];
+        document.getElementById('modalVOEFee').textContent = response['VOE Fee'];
+        document.getElementById('modalVOEAmount').textContent = response['VOE Amount'];
+        document.getElementById('modalPayeeName').textContent = response['Payee Name'];
+        document.getElementById('modalOtherPayees').textContent = response['Other Payees'];
+        document.getElementById('modalTotalPayout').textContent = response['Total Payout'];
+        document.getElementById('modalSentBy').textContent = response['Sent By'];
+        document.getElementById('modalLODateSent').textContent = response['LO Date Sent'];
+        document.getElementById('modalRateTheLender').textContent = response['Rate the lender'];
+        document.getElementById('modalDaysToClose').textContent = response['Days to close?'];
+        document.getElementById('modalNumberOfClosings').textContent = response['Number of closing for the month?'];
+    });
+</script>
+{% endblock %}

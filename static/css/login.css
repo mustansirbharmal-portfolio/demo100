@@ -1,0 +1,215 @@
+<<<<<<< HEAD
+/* Main background and layout */
+body {
+    background-color: #f9fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Login container */
+.login-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 384px;
+    margin: 1rem;
+}
+
+/* Header styles */
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h1 {
+    color: #4b5563;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Form controls */
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    border-color: #0aa1ed;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(10, 161, 237, 0.1);
+}
+
+/* Remember me checkbox */
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: #4b5563;
+    font-size: 0.875rem;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+/* Login button */
+.btn-login {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #0aa1ed;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+    background-color: #0991d4;
+}
+
+/* Footer text */
+.footer-text {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #4b5563;
+    font-size: 0.875rem;
+}
+
+.footer-link {
+    color: #0aa1ed;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .login-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+=======
+/* Main background and layout */
+body {
+    background-color: #f9fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Login container */
+.login-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 384px;
+    margin: 1rem;
+}
+
+/* Header styles */
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h1 {
+    color: #4b5563;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Form controls */
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    border-color: #0aa1ed;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(10, 161, 237, 0.1);
+}
+
+/* Remember me checkbox */
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: #4b5563;
+    font-size: 0.875rem;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+/* Login button */
+.btn-login {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #0aa1ed;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+    background-color: #0991d4;
+}
+
+/* Footer text */
+.footer-text {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #4b5563;
+    font-size: 0.875rem;
+}
+
+.footer-link {
+    color: #0aa1ed;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .login-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+>>>>>>> master

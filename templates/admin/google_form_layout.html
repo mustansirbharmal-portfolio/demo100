@@ -1,0 +1,95 @@
+{% extends "admin/base_layout.html" %}
+
+{% block extra_styles %}
+<style>
+    .response-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .modal-content {
+        border-radius: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>{{ title }}</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search requests...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Requests List -->
+<div class="responses-list">
+    {% if analysis %}
+        {% for response in analysis %}
+        <div class="response-card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ response['First & Last Name'] }}</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-envelope"></i> {{ response['Email Address?'] }}
+                        {% if response['Timestamp'] %}
+                        <span class="ms-3"><i class="bi bi-clock"></i> {{ response['Timestamp'] }}</span>
+                        {% endif %}
+                    </p>
+                    <p class="mb-3">{{ response['Preferred Processor contact info'] }}</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewResponseModal" data-response="{{ response|escape }}">
+                        <i class="bi bi-eye"></i> View Response
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No {{ title }} available.</h3>
+    {% endif %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="viewResponseModal" tabindex="-1" aria-labelledby="viewResponseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewResponseModalLabel">View Response</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% block viewdetailmodal %}
+                <!-- Modal details will be dynamically defined in individual files -->
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.response-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+</script>
+
+{% block viewresponsescript %}
+<!-- Modal script will be dynamically defined in individual files -->
+{% endblock %}
+{% endblock %}

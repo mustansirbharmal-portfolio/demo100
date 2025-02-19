@@ -1,0 +1,364 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}Login Requests - Admin Dashboard{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .request-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .status-badge {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    .status-badge.pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+<<<<<<< HEAD
+    .status-badge.completed {
+        background: #d4edda;
+        color: #155724;
+    }
+=======
+    .status-badge.approved {
+        background: #d4edda;
+        color: #155724;
+    }
+    .status-badge.rejected {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    .info-row {
+        margin-bottom: 8px;
+    }
+    .info-label {
+        font-weight: 600;
+        color: #495057;
+    }
+>>>>>>> master
+</style>
+{% endblock %}
+
+{% block content %}
+<<<<<<< HEAD
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Login Requests</h2>
+    </div>
+    <div class="col-md-4 d-flex justify-content-end">
+        <div class="input-group me-2">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search requests...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+        <a href="/admin/accepted-onboarding-requests" class="btn btn-info">Accepted Requests</a>
+        <a href="/admin/rejected-onboarding-requests" class="btn btn-danger ms-2">Rejected Requests</a>
+    </div>
+</div>
+
+<!-- Requests List -->
+<div class="requests-list">
+    {% if onboarding_requests %}
+        {% for request in onboarding_requests %}
+        <div class="request-card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ request.user_name }}</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-envelope"></i> {{ request.email }}
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-clock"></i> Submitted: {{ request.created_at.strftime('%Y-%m-%d %H:%M:%S') if request.created_at else 'N/A' }}
+                    </p>
+                    <p class="mb-3">{{ request.description }}</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="mb-2">
+                        <span class="status-badge {{ request.status.lower() }}">
+                            {{ request.status.title() }}
+                        </span>
+                    </div>
+                    {% if request.status == 'pending' %}
+                    <button class="btn btn-success btn-sm mb-2" onclick="updateStatus('{{ request._id }}', 'completed')">
+                        <i class="bi bi-check-circle"></i> Accept Request
+                    </button>
+                    <button class="btn btn-danger btn-sm mb-2" onclick="updateStatus('{{ request._id }}', 'rejected')">
+                        <i class="bi bi-x-circle"></i> Reject Request
+                    </button>
+                    {% endif %}
+                    <button class="btn btn-primary btn-sm mb-2" onclick="viewDetails('{{ request._id }}')">
+                        <i class="bi bi-eye"></i> View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No login requests available.</h3>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function updateStatus(requestId, status) {
+        if (confirm(`Are you sure you want to mark this login request as ${status}?`)) {
+            fetch(`/admin/onboarding-requests/${requestId}/status`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ status: status })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert('Error updating status');
+                }
+            });
+        }
+    }
+
+    function viewDetails(requestId) {
+        fetch(`/admin/onboarding-requests/${requestId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const modalBody = document.getElementById('modalBody');
+                    modalBody.innerHTML = `
+                        <table class="table">
+                            <tr><th>Name</th><td>${data.user_name}</td></tr>
+                            <tr><th>Email</th><td>${data.email}</td></tr>
+                            <tr><th>Description</th><td>${data.description}</td></tr>
+                            <tr><th>Submitted At</th><td>${data.created_at}</td></tr>
+                            <tr><th>Status</th><td>${data.status}</td></tr>
+                        </table>
+                    `;
+                    const detailsModal = new bootstrap.Modal(document.getElementById('detailsModal'));
+                    detailsModal.show();
+                } else {
+                    alert('Error fetching details');
+                }
+            });
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.request-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Employee Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+=======
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h2>Login Requests</h2>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search requests...">
+                <button class="btn btn-outline-secondary" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Requests List -->
+    <div class="requests-list">
+        {% if requests %}
+            {% for request in requests %}
+            <div class="request-card" data-request-id="{{ request._id }}">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="mb-4">
+                            <h5 class="mb-3">Request Information</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="info-row">
+                                        <span class="info-label">Employee Name:</span>
+                                        <span>{{ request.employee_name }}</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">Email:</span>
+                                        <span>{{ request.email }}</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">Department:</span>
+                                        <span>{{ request.department }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="info-row">
+                                        <span class="info-label">Role:</span>
+                                        <span>{{ request.role }}</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">Created:</span>
+                                        <span>{{ request.created_at }}</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">Reason:</span>
+                                        <span>{{ request.reason }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <span class="status-badge {{ request.status|lower }}">
+                                {{ request.status|title }}
+                            </span>
+                        </div>
+                        {% if request.status == 'pending' %}
+                        <div class="action-buttons">
+                            <button class="btn btn-success btn-sm mb-2 w-100" onclick="updateRequestStatus('{{ request._id }}', 'approved')">
+                                <i class="bi bi-check-circle"></i> Approve
+                            </button>
+                            <button class="btn btn-danger btn-sm w-100" onclick="updateRequestStatus('{{ request._id }}', 'rejected')">
+                                <i class="bi bi-x-circle"></i> Reject
+                            </button>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No login requests found</p>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function showNotification(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast align-items-center text-white bg-${type} border-0 position-fixed top-0 end-0 m-3`;
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'assertive');
+    toast.setAttribute('aria-atomic', 'true');
+    
+    toast.innerHTML = `
+        <div class="d-flex">
+            <div class="toast-body">
+                ${message}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+    
+    toast.addEventListener('hidden.bs.toast', function () {
+        document.body.removeChild(toast);
+    });
+}
+
+function updateRequestStatus(requestId, status) {
+    if (!confirm(`Are you sure you want to ${status} this login request?`)) {
+        return;
+    }
+
+    const requestCard = document.querySelector(`[data-request-id="${requestId}"]`);
+    if (!requestCard) {
+        showNotification('Error: Request card not found', 'danger');
+        return;
+    }
+
+    // Disable buttons while processing
+    const buttons = requestCard.querySelectorAll('button');
+    buttons.forEach(button => button.disabled = true);
+
+    fetch(`/admin/login-requests/${requestId}/status`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({ status: status })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            throw new Error(data.error);
+        }
+        
+        // Update status badge
+        const statusBadge = requestCard.querySelector('.status-badge');
+        if (statusBadge) {
+            statusBadge.className = `status-badge ${status}`;
+            statusBadge.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+        }
+        
+        // Hide action buttons
+        const actionButtons = requestCard.querySelector('.action-buttons');
+        if (actionButtons) {
+            actionButtons.remove();
+        }
+        
+        // Show success notification
+        showNotification(`Login request ${status} successfully`);
+        
+        // Refresh the page after a short delay
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Re-enable buttons
+        buttons.forEach(button => button.disabled = false);
+        showNotification(error.message || 'An error occurred while updating the status', 'danger');
+    });
+}
+
+// Search functionality
+document.getElementById('searchInput').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    document.querySelectorAll('.request-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(searchTerm) ? '' : 'none';
+    });
+});
+</script>
+>>>>>>> master
+{% endblock %}

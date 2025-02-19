@@ -1,0 +1,86 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}DropBox Files - Admin Dashboard{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .file-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .file-preview {
+        max-width: 100px;
+        max-height: 100px;
+        margin: 5px;
+        border-radius: 5px;
+        border: 1px solid #dee2e6;
+    }
+    .search-container {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>DropBox Files</h2>
+    </div>
+    <div class="col-md-4 search-container">
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search files...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- New Cards for Onboarding and Closing Requests -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Onboarding Files</h5>
+                <p class="card-text">View and manage onboarding files.</p>
+<<<<<<< HEAD
+                <a href="/admin/dropbox/onboarding" class="btn btn-primary">Go to Onboarding Files</a>
+=======
+                <a href="https://www.dropbox.com/scl/fo/6hsw8e5q5vvswsbm27x2e/ADgdIiTaUKDZfJKOeIfuVWM?rlkey=e8ijlkvthpvkvbbhaolbisrgs&st=o9xzwri0&dl=0" class="btn btn-primary">Go to Onboarding Files</a>
+>>>>>>> master
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Closing Request Files</h5>
+                <p class="card-text">View and manage closing request files.</p>
+<<<<<<< HEAD
+                <a href="/admin/dropbox/closing-requests" class="btn btn-primary">Go to Closing Request Files</a>
+=======
+                <a href="https://www.dropbox.com/scl/fo/1c1475jj33jtzrk27wv56/AKbQohrlX0pLgGO3B4tgcmQ?rlkey=mmuy3fhp80mxfee5rkjh3wmgc&st=g0gww7nq&dl=0" class="btn btn-primary">Go to Closing Request Files</a>
+>>>>>>> master
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.file-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+</script>
+{% endblock %}

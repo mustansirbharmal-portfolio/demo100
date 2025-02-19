@@ -1,0 +1,139 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}Room Bookings - Admin Dashboard{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .booking-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .modal-content {
+        border-radius: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Room Bookings</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search bookings...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Bookings List -->
+<div class="bookings-list">
+    {% if room_bookings %}
+        {% for booking in room_bookings %}
+        <div class="booking-card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ booking['user_id'] }}</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-calendar"></i> {{ booking['date'] }}
+                        <span class="ms-3"><i class="bi bi-clock"></i> {{ booking['start_time'] }} - {{ booking['end_time'] }}</span>
+                    </p>
+                    <p class="mb-3">{{ booking['status'] }}</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewBookingModal" data-booking="{{ booking|tojson }}">
+                        <i class="bi bi-eye"></i> View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No room bookings available.</h3>
+    {% endif %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="viewBookingModal" tabindex="-1" aria-labelledby="viewBookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewBookingModalLabel">View Booking Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <dl class="row">
+                    <dt class="col-sm-4">User ID:</dt>
+                    <dd class="col-sm-8" id="modalUserId"></dd>
+
+                    <dt class="col-sm-4">Date:</dt>
+                    <dd class="col-sm-8" id="modalDate"></dd>
+
+                    <dt class="col-sm-4">Start Time:</dt>
+                    <dd class="col-sm-8" id="modalStartTime"></dd>
+
+                    <dt class="col-sm-4">End Time:</dt>
+                    <dd class="col-sm-8" id="modalEndTime"></dd>
+
+                    <dt class="col-sm-4">Status:</dt>
+                    <dd class="col-sm-8" id="modalStatus"></dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.booking-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+
+    // Modal functionality
+    document.getElementById('viewBookingModal').addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var booking = JSON.parse(button.getAttribute('data-booking'));
+
+        document.getElementById('modalUserId').textContent = booking['user_id'] || 'N/A';
+        document.getElementById('modalDate').textContent = booking['date'] || 'N/A';
+        document.getElementById('modalStartTime').textContent = booking['start_time'] || 'N/A';
+        document.getElementById('modalEndTime').textContent = booking['end_time'] || 'N/A';
+        document.getElementById('modalStatus').textContent = booking['status'] || 'N/A';
+    });
+
+    // Update booking status
+    function updateBookingStatus(bookingId, status) {
+        fetch(`/admin/room-bookings/${bookingId}/${status}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ status: status })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Failed to update booking status');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to update booking status');
+        });
+    }
+</script>
+{% endblock %}

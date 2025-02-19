@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Room Scheduling</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.8/main.min.css' rel='stylesheet' />  
+    <!-- FullCalendar Styles -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>  
+    <style>
+        .page-header {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .form-section {
+            margin: 30px 0;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            text-decoration: none;
+        }
+
+        .form-footer {
+            background-color: #111827; /* Dark background color */
+            color: #ffffff; /* White text */
+            font-size: 14px;
+        }
+
+        .form-footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .form-footer h6 {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .form-footer i {
+            font-size: 18px; /* Icon size */
+        }
+        #calendar {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    .fc-header-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .fc-toolbar-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .fc-button {
+        margin: 0 5px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+    .fc-button:hover {
+        background-color: #0056b3;
+    }
+
+    .fc-daygrid-day {
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    .fc-day-today {
+        background-color: #f0f8ff;
+    }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Western Capital Mortgage</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/room_scheduling">Room Scheduling</a></li>
+                <li class="nav-item"><a class="nav-link" href="/calendar">Calendar</a></li>
+                <li class="nav-item"><a class="nav-link" href="/my-bookings">My Bookings</a></li>
+                <li class="nav-item"><a class="btn btn-outline-primary" href="/login">Sign In</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Conference Room Scheduling</h2>
+        <a href="/my-bookings" class="btn btn-outline-primary">My Bookings</a>
+    </div>
+
+    <div class="row">
+        <!-- Calendar Column -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="form-footer mt-5 mt-lg-5 mt-md-5 mt-sm-5">
+    <div class="container">
+        <div class="row text-white py-4">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+                <p class="mb-0">Forward-thinking mortgage solutions for a dynamic future.</p>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Onboarding</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Request Closing</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">FAQs</a></li>
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Resources</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Conference Rooms</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Create Ticket</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">AI Chat</a></li>
+                </ul>
+            </div>
+            <!-- Column 4 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Connect With Us</h6>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="border-light">
+        <div class="text-center text-white">
+            &copy; 2024 | WEBA. All rights reserved. Created by Codecis AI
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.8/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@6.1.8/main.min.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: '/get-bookings',
+            selectable: true,
+            select: function(info) {
+                document.getElementById('date').value = info.startStr;
+            }
+        });
+        calendar.render();
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            try {
+                const response = await fetch('/schedule-meeting', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formObject)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Meeting scheduled successfully!');
+                    calendar.refetchEvents();
+                    e.target.reset();
+                } else {
+                    alert(data.message || 'Failed to schedule meeting. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while scheduling the meeting');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

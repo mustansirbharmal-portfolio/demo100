@@ -1,0 +1,121 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}Onboarding Files - Admin Dashboard{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .file-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .file-preview {
+        max-width: 100px;
+        max-height: 100px;
+        margin: 5px;
+        border-radius: 5px;
+        border: 1px solid #dee2e6;
+    }
+    .search-container {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Onboarding Files</h2>
+    </div>
+    <div class="col-md-4 search-container">
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search users...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Users List -->
+<div class="files-list">
+    {% if onboarding_folders %}
+        {% for folder in onboarding_folders %}
+        <div class="file-card" data-username="{{ folder.name }}">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ folder.name }}</h5>
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-primary btn-sm view-files" data-username="{{ folder.name }}">
+                        <i class="bi bi-eye"></i> View Files
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No users available.</h3>
+    {% endif %}
+</div>
+
+<!-- Modal for displaying files -->
+<div class="modal fade" id="filesModal" tabindex="-1" aria-labelledby="filesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="filesModalLabel">Files for <span id="modalUsername"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>ID Files</h6>
+                <ul id="idFilesList"></ul>
+                <h6>W9 Files</h6>
+                <ul id="w9FilesList"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.file-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+
+    // View files functionality
+    document.querySelectorAll('.view-files').forEach(button => {
+        button.addEventListener('click', function() {
+            const username = this.getAttribute('data-username');
+            document.getElementById('modalUsername').textContent = username;
+            fetch(`/admin/dropbox/onboarding/${encodeURIComponent(username)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const idFilesList = document.getElementById('idFilesList');
+                    const w9FilesList = document.getElementById('w9FilesList');
+                    idFilesList.innerHTML = '';
+                    w9FilesList.innerHTML = '';
+                    data.id_files.forEach(file => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<a href="${file.path}" target="_blank">${file.name}</a>`;
+                        idFilesList.appendChild(li);
+                    });
+                    data.w9_files.forEach(file => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<a href="${file.path}" target="_blank">${file.name}</a>`;
+                        w9FilesList.appendChild(li);
+                    });
+                    new bootstrap.Modal(document.getElementById('filesModal')).show();
+                });
+        });
+    });
+</script>
+{% endblock %}

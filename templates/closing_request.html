@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Closing</title>
+<<<<<<< HEAD
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self' *;">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+=======
+    
+    <!-- Bootstrap CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+>>>>>>> master
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+        .step-container {
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .file-upload {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .file-upload:hover {
+            background-color: #f1f1f1;
+        }
+
+        .form-footer {
+        background-color: #111827; /* Dark background color */
+        color: #ffffff; /* White text */
+        font-size: 14px;
+        }
+
+        
+        .form-footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+        text-decoration: underline;
+}
+
+
+        .form-footer h6 {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .form-footer i {
+            font-size: 18px; /* Icon size */
+        }
+
+    </style>
+</head>
+<body>
+<<<<<<< HEAD
+
+=======
+    
+    <!-- Navbar -->
+>>>>>>> master
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-weight: bold;">Western Capital Mortgage</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/onboarding">Onboarding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/closing-request">Request Closing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pda">PDA</a></li>
+<<<<<<< HEAD
+=======
+                    <li class="nav-item"><a class="nav-link" href="/cda">CDA</a></li>
+>>>>>>> master
+                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/room_scheduling">Conference Room</a></li>
+                    <li class="nav-item"><a class="btn btn-primary me-2" href="/create-ticket">Create Ticket</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0" href="#">AI Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/logout" onclick="return confirm('Are you sure you want to logout?')">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container py-5">
+<<<<<<< HEAD
+        <h2 class="text-center mb-4">Request a Closing</h2>
+        <p class="text-center">Submit all necessary closing details and documents to ensure a smooth mortgage closing process.</p>
+        <p class="text-center text-muted">For support or questions, contact the Closing department or email compliance@wcmlending.net</p>
+
+        <div class="progress mb-4">
+            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Step 1: CDA Form</div>
+        </div>
+
+        <!-- Step 1: CDA Form -->
+=======
+        <h2 class="text-center mb-4" style="color:#08A1ED">Request a Closing</h2>
+        <p class="text-center">Submit all necessary closing details and documents to ensure a smooth mortgage closing process.</p>
+        <p class="text-center text-muted">For support or questions, contact the Closing department or email compliance@wcmlending.net</p>
+
+        <!-- <div class="progress mb-4">
+            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Step 1: CDA Form</div>
+        </div> -->
+
+        <!-- Step 1: CDA Form
+>>>>>>> master
+        <div id="step1" class="step-container mb-4">
+            <h4>Step 1: Complete CDA Form</h4>
+            <p>Fill out the (CDA) Google Form with borrower details, property information, and any other pertinent closing data.</p>
+            <a class="btn btn-primary mb-2" href="https://docs.google.com/forms/u/1/d/e/1FAIpQLScBI-2QRTmrEc-MB4q1R-iVXQ5lytYubRepldJXvvNK0xqEWg/viewform?pli=1" target="_blank">Fill Out Closing Form</a>
+            
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="formCompleteCheckbox">
+                <label class="form-check-label" for="formCompleteCheckbox">
+                    Mark form as complete
+                </label>
+            </div>
+
+            <button id="continueToStep2" class="btn btn-primary mt-3" style="display: none;">Continue to Document Upload</button>
+<<<<<<< HEAD
+        </div>
+
+        <!-- Step 2: Document Upload -->
+        <div id="step2" class="step-container" style="display: none;">
+            <h4>Step 2: Upload Required Documents</h4>
+            <p>Please upload all required documents for closing. Select N/A if a document is not applicable.</p>
+
+            <div class="row g-4">
+                <!-- Approval Letter -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Approval Letter</h5>
+                            <button class="btn btn-primary w-100 mb-2" data-input="approvalLetterInput">
+                                <i class="bi bi-upload"></i> Upload Approval Letter
+                            </button>
+                            <input type="file" id="approvalLetterInput" data-type="approvalLetter" style="display: none;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="approvalLetterCheck">
+                                <label class="form-check-label" for="approvalLetterCheck">
+                                    I have uploaded this document
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Updated Approval Letter -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Updated Approval Letter</h5>
+                            <button class="btn btn-primary w-100 mb-2" data-input="updatedApprovalInput">
+                                <i class="bi bi-upload"></i> Upload Updated Approval
+                            </button>
+                            <input type="file" id="updatedApprovalInput" data-type="updatedApproval" style="display: none;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="updatedApprovalStatus" id="updatedApprovalNA" value="N/A">
+                                <label class="form-check-label" for="updatedApprovalNA">N/A</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="updatedApprovalStatus" id="updatedApprovalUploaded" value="uploaded">
+                                <label class="form-check-label" for="updatedApprovalUploaded">I have uploaded all</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DU or LP -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">DU or LP</h5>
+                            <button class="btn btn-primary w-100 mb-2" data-input="duLpInput">
+                                <i class="bi bi-upload"></i> Upload DU/LP
+                            </button>
+                            <input type="file" id="duLpInput" data-type="duLp" style="display: none;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="duLpStatus" id="duLpNA" value="N/A">
+                                <label class="form-check-label" for="duLpNA">N/A</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="duLpStatus" id="duLpUploaded" value="uploaded">
+                                <label class="form-check-label" for="duLpUploaded">I have uploaded all</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit and credit supplements -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Credit and Credit Supplements</h5>
+                            <button class="btn btn-primary w-100 mb-2" data-input="creditReportInput">
+                                <i class="bi bi-upload"></i> Upload Credit Report
+                            </button>
+                            <input type="file" id="creditReportInput" data-type="creditReport" style="display: none;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="creditReportCheck">
+                                <label class="form-check-label" for="creditReportCheck">
+                                    I have uploaded the credit report
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                                <!-- Loan Estimate (LE) and Updated LE's -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Loan Estimate (LE) and Updated LE's</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="leReportInput">
+                                                <i class="bi bi-upload"></i> Upload LE/Updated LE
+                                            </button>
+                                            <input type="file" id="leReportInput" data-type="leReport" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="leReportCheck">
+                                                <label class="form-check-label" for="leReportCheck">
+                                                    I have uploaded the LE/Updated LE
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <!-- Borrower's Authorization -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Borrower's Authorization</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="borrowerAuthInput">
+                                                <i class="bi bi-upload"></i> Upload Borrower's Authorization
+                                            </button>
+                                            <input type="file" id="borrowerAuthInput" data-type="borrowerAuth" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="borrowerAuthReportCheck">
+                                                <label class="form-check-label" for="borrowerAuthReportCheck">
+                                                    I have uploaded the Borrower's Authorization
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- All Borrower's Conditions -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">All Borrower's Conditions</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="borrowerConditionsInput">
+                                                <i class="bi bi-upload"></i> Upload Conditions
+                                            </button>
+                                            <input type="file" id="borrowerConditionsInput" data-type="borrowerConditions" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="borrowerConditionsCheck">
+                                                <label class="form-check-label" for="borrowerConditionsCheck">
+                                                    I have uploaded the Conditions
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Escrow -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Escrow</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="escrowInput">
+                                                <i class="bi bi-upload"></i> Upload Escrow
+                                            </button>
+                                            <input type="file" id="escrowInput" data-type="escrow" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="escrowCheck">
+                                                <label class="form-check-label" for="escrowCheck">
+                                                    I have uploaded the Escrow Documents
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Appraisal Letter -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Appraisal Letter</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="appraisalLetterInput">
+                                                <i class="bi bi-upload"></i> Upload Appraisal Letter
+                                            </button>
+                                            <input type="file" id="appraisalLetterInput" data-type="appraisalLetter" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="appraisalLetterStatus" id="appraisalLetterNA" value="N/A">
+                                                <label class="form-check-label" for="appraisalLetterNA">N/A</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="appraisalLetterCheck">
+                                                <label class="form-check-label" for="appraisalLetterCheck">
+                                                    I have uploaded all
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Inspections -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Inspections</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="inspectionsInput">
+                                                <i class="bi bi-upload"></i> Upload Inspections
+                                            </button>
+                                            <input type="file" id="inspectionsInput" data-type="inspections" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="inspectionsStatus" id="inspectionsNA" value="N/A">
+                                                <label class="form-check-label" for="inspectionsNA">N/A</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="inspectionsCheck">
+                                                <label class="form-check-label" for="inspectionsCheck">
+                                                    I have uploaded all
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <!-- Initial Disclosures -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Initial Disclosures</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="initialDisclosuresInput">
+                                                <i class="bi bi-upload"></i> Upload Initial Disclosures
+                                            </button>
+                                            <input type="file" id="initialDisclosuresInput" data-type="initialDisclosures" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="initialDisclosuresCheck">
+                                                <label class="form-check-label" for="initialDisclosuresCheck">
+                                                    I have uploaded the Initial Disclosures
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <!-- Initial Disclosures -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Closing Disclosures(CD) & updated closing disclosures</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="cdUpdatedDocumentsInput">
+                                                <i class="bi bi-upload"></i> Upload documents
+                                            </button>
+                                            <input type="file" id="cdUpdatedDocumentsInput" data-type="cdUpdatedDocuments" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="cdUpdatedDocumentsCheck">
+                                                <label class="form-check-label" for="cdUpdatedDocumentsCheck">
+                                                    I have uploaded documents
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                              
+                                <!-- Borrowers Identification -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Borrowers Identification</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="borrowersIdentificationInput">
+                                                <i class="bi bi-upload"></i> Upload Borrowers Identification
+                                            </button>
+                                            <input type="file" id="borrowersIdentificationInput" data-type="borrowersIdentification" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="borrowersIdentificationCheck">
+                                                <label class="form-check-label" for="borrowersIdentificationCheck">
+                                                    I have uploaded documents
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                                              
+                                <!-- Social Security or SS 89 -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Social Security or SS 89</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="ss89Input">
+                                                <i class="bi bi-upload"></i> Upload Social Security or SS 89
+                                            </button>
+                                            <input type="file" id="ss89Input" data-type="ss89" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="ss89Check">
+                                                <label class="form-check-label" for="ss89Check">
+                                                    I have uploaded documents
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <!-- Income -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Income</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="incomeInput">
+                                                <i class="bi bi-upload"></i> Upload Income Documents
+                                            </button>
+                                            <input type="file" id="incomeInput" data-type="income" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="incomeStatus" id="incomeNA" value="N/A">
+                                                <label class="form-check-label" for="incomeNA">N/A</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="incomeCheck">
+                                                <label class="form-check-label" for="incomeCheck">
+                                                    I have uploaded all
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                                
+                                <!-- Income -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Assets</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="assestsInput">
+                                                <i class="bi bi-upload"></i> Upload Assets Documents
+                                            </button>
+                                            <input type="file" id="assestsInput" data-type="assests" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="assestsStatus" id="assestsNA" value="N/A">
+                                                <label class="form-check-label" for="assestsNA">N/A</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="assestsCheck">
+                                                <label class="form-check-label" for="assestsCheck">
+                                                    I have uploaded all
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Letter of Explanation -->
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Letter of Explanation</h5>
+                                            <button class="btn btn-primary w-100 mb-2" data-input="letterExplanationInput">
+                                                <i class="bi bi-upload"></i> Upload Letter of Explanation
+                                            </button>
+                                            <input type="file" id="letterExplanationInput" data-type="letterExplanation" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="letterExplanationStatus" id="letterExplanationNA" value="N/A">
+                                                <label class="form-check-label" for="letterExplanationNA">N/A</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="letterExplanationCheck">
+                                                <label class="form-check-label" for="letterExplanationCheck">
+                                                    I have uploaded all
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+=======
+        </div> -->
+
+        <!-- Step 2: Document Upload -->
+        <div id="step2" class="step-container" >
+            <!-- <h4>Step 2: Upload Required Documents</h4>
+            <p>Please upload all required documents for closing. Select N/A if a document is not applicable.</p> -->
+
+            <div class="container mt-4">
+                <h2>Request a Closing</h2>
+                
+                <!-- Main Form -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form id="closingRequestForm">
+                            <!-- Borrower Information -->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <h5 class="mb-3">Borrower Information</h5>
+                                    <div class="mb-3">
+                                        <label for="borrowerName" class="form-label">Borrower's Full Name*</label>
+                                        <input type="text" class="form-control" id="borrowerName" name="borrowerName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="propertyAddress" class="form-label">Property Address*</label>
+                                        <input type="text" class="form-control" id="propertyAddress" name="propertyAddress" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phoneNumber" class="form-label">Phone Number*</label>
+                                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="emailAddress" class="form-label">Email Address*</label>
+                                        <input type="email" class="form-control" id="emailAddress" name="emailAddress" required>
+                                    </div>
+                                </div>
+
+                                <!-- Loan Officer Information -->
+                                <div class="col-md-6">
+                                    <h5 class="mb-3">Loan Officer Information</h5>
+                                    <div class="mb-3">
+                                        <label for="loName" class="form-label">MLO Name*</label>
+                                        <input type="text" class="form-control" id="loName" name="loName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="loPhone" class="form-label">MLO Phone*</label>
+                                        <input type="tel" class="form-control" id="loPhone" name="loPhone" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="loEmail" class="form-label">MLO Email*</label>
+                                        <input type="email" class="form-control" id="loEmail" name="loEmail" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Processor Information -->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <h5 class="mb-3">Processor Information</h5>
+                                    <div class="mb-3">
+                                        <label for="processorName" class="form-label">Processor Name*</label>
+                                        <input type="text" class="form-control" id="processorName" name="processorName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="processorPhone" class="form-label">Processor Phone*</label>
+                                        <input type="tel" class="form-control" id="processorPhone" name="processorPhone" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="processorEmail" class="form-label">Processor Email*</label>
+                                        <input type="email" class="form-control" id="processorEmail" name="processorEmail" required>
+                                    </div>
+                                </div>
+
+                                <!-- Service Providers -->
+                                <div class="col-md-6">
+                                    <h5 class="mb-3">Service Providers</h5>
+                                    <div class="mb-3">
+                                        <label for="escrowCompany" class="form-label">Escrow Company*</label>
+                                        <input type="text" class="form-control" id="escrowCompany" name="escrowCompany" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="escrowContact" class="form-label">Escrow Contact*</label>
+                                        <input type="text" class="form-control" id="escrowContact" name="escrowContact" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="escrowEmail" class="form-label">Escrow Email*</label>
+                                        <input type="email" class="form-control" id="escrowEmail" name="escrowEmail" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Document Upload Section -->
+                <div class="row g-4">
+                    <!-- Approval Letter -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Approval Letter</h5>
+                                <button class="btn btn-primary w-100 mb-2" data-input="approvalLetterInput">
+                                    <i class="bi bi-upload"></i> Upload Approval Letter
+                                </button>
+                                <input type="file" id="approvalLetterInput" data-type="approvalLetter" style="display: none;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="approvalLetterCheck">
+                                    <label class="form-check-label" for="approvalLetterCheck">
+                                        I have uploaded this document
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Updated Approval Letter -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Updated Approval Letter</h5>
+                                <button class="btn btn-primary w-100 mb-2" data-input="updatedApprovalInput">
+                                    <i class="bi bi-upload"></i> Upload Updated Approval
+                                </button>
+                                <input type="file" id="updatedApprovalInput" data-type="updatedApproval" style="display: none;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="updatedApprovalStatus" id="updatedApprovalNA" value="N/A">
+                                    <label class="form-check-label" for="updatedApprovalNA">N/A</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="updatedApprovalStatus" id="updatedApprovalUploaded" value="uploaded">
+                                    <label class="form-check-label" for="updatedApprovalUploaded">I have uploaded all</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DU or LP -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">DU or LP</h5>
+                                <button class="btn btn-primary w-100 mb-2" data-input="duLpInput">
+                                    <i class="bi bi-upload"></i> Upload DU/LP
+                                </button>
+                                <input type="file" id="duLpInput" data-type="duLp" style="display: none;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="duLpStatus" id="duLpNA" value="N/A">
+                                    <label class="form-check-label" for="duLpNA">N/A</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="duLpStatus" id="duLpUploaded" value="uploaded">
+                                    <label class="form-check-label" for="duLpUploaded">I have uploaded all</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Credit and credit supplements -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Credit and Credit Supplements</h5>
+                                <button class="btn btn-primary w-100 mb-2" data-input="creditReportInput">
+                                    <i class="bi bi-upload"></i> Upload Credit Report
+                                </button>
+                                <input type="file" id="creditReportInput" data-type="creditReport" style="display: none;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="creditReportCheck">
+                                    <label class="form-check-label" for="creditReportCheck">
+                                        I have uploaded the credit report
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                                    <!-- Loan Estimate (LE) and Updated LE's -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Loan Estimate (LE) and Updated LE's</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="leReportInput">
+                                                    <i class="bi bi-upload"></i> Upload LE/Updated LE
+                                                </button>
+                                                <input type="file" id="leReportInput" data-type="leReport" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="leReportCheck">
+                                                    <label class="form-check-label" for="leReportCheck">
+                                                        I have uploaded the LE/Updated LE
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <!-- Borrower's Authorization -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Borrower's Authorization</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="borrowerAuthInput">
+                                                    <i class="bi bi-upload"></i> Upload Borrower's Authorization
+                                                </button>
+                                                <input type="file" id="borrowerAuthInput" data-type="borrowerAuth" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="borrowerAuthReportCheck">
+                                                    <label class="form-check-label" for="borrowerAuthReportCheck">
+                                                        I have uploaded the Borrower's Authorization
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- All Borrower's Conditions -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">All Borrower's Conditions</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="borrowerConditionsInput">
+                                                    <i class="bi bi-upload"></i> Upload Conditions
+                                                </button>
+                                                <input type="file" id="borrowerConditionsInput" data-type="borrowerConditions" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="borrowerConditionsCheck">
+                                                    <label class="form-check-label" for="borrowerConditionsCheck">
+                                                        I have uploaded the Conditions
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Escrow -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Escrow</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="escrowInput">
+                                                    <i class="bi bi-upload"></i> Upload Escrow
+                                                </button>
+                                                <input type="file" id="escrowInput" data-type="escrow" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="escrowCheck">
+                                                    <label class="form-check-label" for="escrowCheck">
+                                                        I have uploaded the Escrow Documents
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Appraisal Letter -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Appraisal Letter</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="appraisalLetterInput">
+                                                    <i class="bi bi-upload"></i> Upload Appraisal Letter
+                                                </button>
+                                                <input type="file" id="appraisalLetterInput" data-type="appraisalLetter" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="appraisalLetterStatus" id="appraisalLetterNA" value="N/A">
+                                                    <label class="form-check-label" for="appraisalLetterNA">N/A</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="appraisalLetterCheck">
+                                                    <label class="form-check-label" for="appraisalLetterCheck">
+                                                        I have uploaded all
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Inspections -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Inspections</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="inspectionsInput">
+                                                    <i class="bi bi-upload"></i> Upload Inspections
+                                                </button>
+                                                <input type="file" id="inspectionsInput" data-type="inspections" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="inspectionsStatus" id="inspectionsNA" value="N/A">
+                                                    <label class="form-check-label" for="inspectionsNA">N/A</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="inspectionsCheck">
+                                                    <label class="form-check-label" for="inspectionsCheck">
+                                                        I have uploaded all
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <!-- Initial Disclosures -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Initial Disclosures</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="initialDisclosuresInput">
+                                                    <i class="bi bi-upload"></i> Upload Initial Disclosures
+                                                </button>
+                                                <input type="file" id="initialDisclosuresInput" data-type="initialDisclosures" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="initialDisclosuresCheck">
+                                                    <label class="form-check-label" for="initialDisclosuresCheck">
+                                                        I have uploaded the Initial Disclosures
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <!-- Initial Disclosures -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Closing Disclosures(CD) & updated closing disclosures</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="cdUpdatedDocumentsInput">
+                                                    <i class="bi bi-upload"></i> Upload documents
+                                                </button>
+                                                <input type="file" id="cdUpdatedDocumentsInput" data-type="cdUpdatedDocuments" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="cdUpdatedDocumentsCheck">
+                                                    <label class="form-check-label" for="cdUpdatedDocumentsCheck">
+                                                        I have uploaded documents
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                          
+                                    <!-- Borrowers Identification -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Borrowers Identification</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="borrowersIdentificationInput">
+                                                    <i class="bi bi-upload"></i> Upload Borrowers Identification
+                                                </button>
+                                                <input type="file" id="borrowersIdentificationInput" data-type="borrowersIdentification" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="borrowersIdentificationCheck">
+                                                    <label class="form-check-label" for="borrowersIdentificationCheck">
+                                                        I have uploaded documents
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                                                              
+                                    <!-- Social Security or SS 89 -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Social Security or SS 89</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="ss89Input">
+                                                    <i class="bi bi-upload"></i> Upload Social Security or SS 89
+                                                </button>
+                                                <input type="file" id="ss89Input" data-type="ss89" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="ss89Check">
+                                                    <label class="form-check-label" for="ss89Check">
+                                                        I have uploaded documents
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <!-- Income -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Income</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="incomeInput">
+                                                    <i class="bi bi-upload"></i> Upload Income Documents
+                                                </button>
+                                                <input type="file" id="incomeInput" data-type="income" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="incomeStatus" id="incomeNA" value="N/A">
+                                                    <label class="form-check-label" for="incomeNA">N/A</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="incomeCheck">
+                                                    <label class="form-check-label" for="incomeCheck">
+                                                        I have uploaded all
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                                                
+                                    <!-- Income -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Assets</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="assestsInput">
+                                                    <i class="bi bi-upload"></i> Upload Assets Documents
+                                                </button>
+                                                <input type="file" id="assestsInput" data-type="assests" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="assestsStatus" id="assestsNA" value="N/A">
+                                                    <label class="form-check-label" for="assestsNA">N/A</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="assestsCheck">
+                                                    <label class="form-check-label" for="assestsCheck">
+                                                        I have uploaded all
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Letter of Explanation -->
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Letter of Explanation</h5>
+                                                <button class="btn btn-primary w-100 mb-2" data-input="letterExplanationInput">
+                                                    <i class="bi bi-upload"></i> Upload Letter of Explanation
+                                                </button>
+                                                <input type="file" id="letterExplanationInput" data-type="letterExplanation" style="display: none;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="letterExplanationStatus" id="letterExplanationNA" value="N/A">
+                                                    <label class="form-check-label" for="letterExplanationNA">N/A</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="letterExplanationCheck">
+                                                    <label class="form-check-label" for="letterExplanationCheck">
+                                                        I have uploaded all
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+>>>>>>> master
+
+
+                <!-- Additional document categories -->
+                <!-- Add more document upload sections following the same pattern -->
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <button type="button" class="btn btn-primary btn-lg" id="submitDocsButton" onclick="submitDocuments()">
+                        <i class="bi bi-check-circle"></i> Submit All Documents
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-4 text-end">
+                <button class="btn btn-secondary me-2" onclick="showStep1()">Back</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+<<<<<<< HEAD
+document.addEventListener('DOMContentLoaded', function() {
+    const formCompleteCheckbox = document.getElementById('formCompleteCheckbox');
+    const continueButton = document.getElementById('continueToStep2');
+    
+    formCompleteCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            continueButton.style.display = 'block';
+        } else {
+            continueButton.style.display = 'none';
+        }
+    });
+    
+    if (continueButton) {
+        continueButton.addEventListener('click', function() {
+            showStep2();
+        });
+    }
+
+    // Add click handlers for all upload buttons
+    document.querySelectorAll('[data-input]').forEach(button => {
+        button.addEventListener('click', function() {
+            const inputId = this.getAttribute('data-input');
+            document.getElementById(inputId).click();
+        });
+    });
+
+    // Add change handlers for all file inputs
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', function() {
+            const documentType = this.getAttribute('data-type');
+            if (this.files && this.files[0]) {
+                uploadFile(this.files[0], documentType, this);
+            }
+        });
+    });
+});
+
+function uploadFile(file, documentType, inputElement) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('document_type', documentType);
+
+    const button = inputElement.previousElementSibling;
+    const originalText = button.innerHTML;
+    button.innerHTML = '<i class="bi bi-arrow-repeat"></i> Uploading...';
+    button.disabled = true;
+
+    fetch('/api/upload_document_api', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            button.innerHTML = '<i class="bi bi-check"></i> Uploaded';
+            button.classList.remove('btn-primary');
+            button.classList.add('btn-success');
+            
+            const checkbox = inputElement.parentElement.querySelector('.form-check-input[type="checkbox"]');
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        } else {
+            throw new Error(data.error || 'Upload failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        button.innerHTML = originalText;
+        button.disabled = false;
+        alert('Error uploading file: ' + error.message);
+    });
+}
+
+function showStep1() {
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('step2').style.display = 'none';
+    document.querySelector('.progress-bar').style.width = '50%';
+    document.querySelector('.progress-bar').textContent = 'Step 1: CDA Form';
+}
+
+function showStep2() {
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+    document.querySelector('.progress-bar').style.width = '100%';
+    document.querySelector('.progress-bar').textContent = 'Step 2: Document Upload';
+}
+
+async function inviteProcessorForDocuments(processorId) {
+    const additionalMessage = document.getElementById('inviteMessage2').value;
+    
+    if (!processorId) {
+        alert('Please select a processor');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/api/invite_processor_for_documents', {
+=======
+    // Initialize uploadedFiles object
+    const uploadedFiles = {};
+
+    // Function to handle file upload success
+    function handleUploadSuccess(docType) {
+        uploadedFiles[docType] = true;
+        const checkbox = document.querySelector(`#${docType}Check`);
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+        showAlert('success', 'Document uploaded successfully');
+    }
+
+    // Function to handle file upload
+    function handleFileUpload(input, docType) {
+        const file = input.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('document_type', docType);
+
+        fetch('/api/upload_document_api', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                handleUploadSuccess(docType);
+            } else {
+                showAlert('danger', `Upload failed: ${data.error}`);
+            }
+        })
+        .catch(error => {
+            console.error('Upload error:', error);
+            showAlert('danger', 'Upload failed. Please try again.');
+        });
+    }
+
+    // Add event listeners to all file inputs
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        const docType = input.dataset.type;
+        if (docType) {
+            input.addEventListener('change', () => handleFileUpload(input, docType));
+        }
+    });
+
+    // Add event listeners to all upload buttons
+    document.querySelectorAll('button[data-input]').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const inputId = button.dataset.input;
+            const input = document.getElementById(inputId);
+            if (input) {
+                input.click();
+            }
+        });
+    });
+
+    function showAlert(type, message) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+        alertDiv.style.zIndex = "1050";
+        alertDiv.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => {
+            alertDiv.remove();
+        }, 5000);
+    }
+    
+    function submitDocuments() {
+        // Get form element
+        const form = document.getElementById('closingRequestForm');
+        if (!form) {
+            console.error('Form not found');
+            showAlert('danger', 'Form not found. Please refresh the page and try again.');
+            return;
+        }
+
+        // Collect form data
+        const formData = {
+            borrowerName: form.querySelector('#borrowerName')?.value || '',
+            propertyAddress: form.querySelector('#propertyAddress')?.value || '',
+            phoneNumber: form.querySelector('#phoneNumber')?.value || '',
+            emailAddress: form.querySelector('#emailAddress')?.value || '',
+            loName: form.querySelector('#loName')?.value || '',
+            loPhone: form.querySelector('#loPhone')?.value || '',
+            loEmail: form.querySelector('#loEmail')?.value || '',
+            processorName: form.querySelector('#processorName')?.value || '',
+            processorPhone: form.querySelector('#processorPhone')?.value || '',
+            processorEmail: form.querySelector('#processorEmail')?.value || '',
+            escrowCompany: form.querySelector('#escrowCompany')?.value || '',
+            escrowContact: form.querySelector('#escrowContact')?.value || '',
+            escrowEmail: form.querySelector('#escrowEmail')?.value || ''
+        };
+
+        // Validate required fields
+        const requiredFields = [
+            'borrowerName', 'propertyAddress', 'phoneNumber', 'emailAddress',
+            'loName', 'loPhone', 'loEmail',
+            'processorName', 'processorPhone', 'processorEmail',
+            'escrowCompany', 'escrowContact', 'escrowEmail'
+        ];
+
+        const missingFields = requiredFields.filter(field => !formData[field]);
+        if (missingFields.length > 0) {
+            showAlert('danger', `Please fill in all required fields: ${missingFields.join(', ')}`);
+            return;
+        }
+
+        // Prepare request data
+        const requestData = {
+            formData: formData,
+            documentStatuses: uploadedFiles
+        };
+
+        console.log('Submitting data:', requestData);
+
+        // Submit the request
+        fetch('/api/submit_closing_request', {
+>>>>>>> master
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+<<<<<<< HEAD
+            body: JSON.stringify({
+                processorId: processorId,
+                additionalMessage: additionalMessage,
+                step: 'document_upload'
+            })
+        });
+        
+        if (response.ok) {
+            alert('Invitation sent successfully');
+            bootstrap.Modal.getInstance(document.getElementById('inviteProcessorModal2')).hide();
+            window.location.href = '/dashboard';  // Return to dashboard after inviting processor
+        } else {
+            throw new Error('Failed to send invitation');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to send invitation');
+    }
+}
+
+function validateForm() {
+    const requiredDocuments = {
+        'approvalLetter': document.getElementById('approvalLetterCheck').checked,
+        'creditReport': document.getElementById('creditReportCheck').checked,
+        'leReport': document.getElementById('leReportCheck').checked,
+        'borrowerAuth': document.getElementById('borrowerAuthReportCheck').checked,
+        'borrowerConditions': document.getElementById('borrowerConditionsCheck').checked,
+        'escrow': document.getElementById('escrowCheck').checked,
+        'initialDisclosures': document.getElementById('initialDisclosuresCheck').checked,
+        'cdUpdatedDocuments': document.getElementById('cdUpdatedDocumentsCheck').checked,
+        'borrowersIdentification': document.getElementById('borrowersIdentificationCheck').checked,
+        'ss89': document.getElementById('ss89Check').checked
+    };
+
+    const optionalDocuments = {
+        'appraisalLetter': {
+            check: document.getElementById('appraisalLetterCheck').checked,
+            na: document.getElementById('appraisalLetterNA').checked
+        },
+        'inspections': {
+            check: document.getElementById('inspectionsCheck').checked,
+            na: document.getElementById('inspectionsNA').checked
+        },
+        'income': {
+            check: document.getElementById('incomeCheck').checked,
+            na: document.getElementById('incomeNA').checked
+        },
+        'assets': {
+            check: document.getElementById('assestsCheck').checked,
+            na: document.getElementById('assestsNA').checked
+        },
+        'letterExplanation': {
+            check: document.getElementById('letterExplanationCheck').checked,
+            na: document.getElementById('letterExplanationNA').checked
+        }
+    };
+
+    // Check required documents
+    for (const [doc, isChecked] of Object.entries(requiredDocuments)) {
+        if (!isChecked) {
+            alert(`Please upload ${doc.replace(/([A-Z])/g, ' $1').toLowerCase()} document`);
+            return false;
+        }
+    }
+
+    // Check optional documents (must be either uploaded or marked as N/A)
+    for (const [doc, status] of Object.entries(optionalDocuments)) {
+        if (!status.check && !status.na) {
+            alert(`Please either upload ${doc.replace(/([A-Z])/g, ' $1').toLowerCase()} document or mark it as N/A`);
+            return false;
+        }
+    }
+
+    return true;
+}
+
+async function submitDocuments() {
+    if (!validateForm()) {
+        return;
+    }
+
+    const submitButton = document.getElementById('submitDocsButton');
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="bi bi-hourglass-split"></i> Submitting...';
+
+    const documentStatuses = {
+        approvalLetter: document.getElementById('approvalLetterCheck').checked,
+        creditReport: document.getElementById('creditReportCheck').checked,
+        leReport: document.getElementById('leReportCheck').checked,
+        borrowerAuth: document.getElementById('borrowerAuthReportCheck').checked,
+        borrowerConditions: document.getElementById('borrowerConditionsCheck').checked,
+        escrow: document.getElementById('escrowCheck').checked,
+        appraisalLetter: {
+            uploaded: document.getElementById('appraisalLetterCheck').checked,
+            na: document.getElementById('appraisalLetterNA').checked
+        },
+        inspections: {
+            uploaded: document.getElementById('inspectionsCheck').checked,
+            na: document.getElementById('inspectionsNA').checked
+        },
+        initialDisclosures: document.getElementById('initialDisclosuresCheck').checked,
+        cdUpdatedDocuments: document.getElementById('cdUpdatedDocumentsCheck').checked,
+        borrowersIdentification: document.getElementById('borrowersIdentificationCheck').checked,
+        ss89: document.getElementById('ss89Check').checked,
+        income: {
+            uploaded: document.getElementById('incomeCheck').checked,
+            na: document.getElementById('incomeNA').checked
+        },
+        assets: {
+            uploaded: document.getElementById('assestsCheck').checked,
+            na: document.getElementById('assestsNA').checked
+        },
+        letterExplanation: {
+            uploaded: document.getElementById('letterExplanationCheck').checked,
+            na: document.getElementById('letterExplanationNA').checked
+        }
+    };
+
+    try {
+        const response = await fetch('/api/submit_closing_documents', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                documentStatuses: documentStatuses
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Documents submitted successfully!');
+            window.location.href = '/home';
+        } else {
+            throw new Error(data.error || 'Failed to submit documents');
+        }
+    } catch (error) {
+        alert('Error submitting documents: ' + error.message);
+        submitButton.disabled = false;
+        submitButton.innerHTML = '<i class="bi bi-check-circle"></i> Submit All Documents';
+    }
+}
+
+// Add event listeners for radio buttons to handle N/A selections
+document.addEventListener('DOMContentLoaded', function() {
+    const radioGroups = [
+        'appraisalLetterStatus',
+        'inspectionsStatus',
+        'incomeStatus',
+        'assetsStatus',
+        'letterExplanationStatus'
+    ];
+
+    radioGroups.forEach(groupName => {
+        const naRadio = document.getElementById(`${groupName.replace('Status', '')}NA`);
+        if (naRadio) {
+            naRadio.addEventListener('change', function() {
+                if (this.checked) {
+                    const uploadButton = this.closest('.card-body').querySelector('.btn-primary');
+                    if (uploadButton) {
+                        uploadButton.disabled = true;
+                        uploadButton.innerHTML = '<i class="bi bi-slash-circle"></i> N/A';
+                    }
+                }
+            });
+        }
+    });
+});
+=======
+            body: JSON.stringify(requestData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.error || `HTTP error! status: ${response.status}`);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                showAlert('success', 'Closing request submitted successfully!');
+                setTimeout(() => {
+                    window.location.href = '/home';
+                }, 2000);
+            } else {
+                showAlert('danger', `Error: ${data.error}`);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showAlert('danger', `Error: ${error.message}`);
+        });
+    }
+>>>>>>> master
+</script>
+    
+<!-- Footer -->
+<div class="form-footer">
+    <div class="container">
+        <div class="row text-white py-4">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+                <p class="mb-0">Forward-thinking mortgage solutions for a dynamic future.</p>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/home" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="/onboarding" class="text-white text-decoration-none">Onboarding</a></li>
+                    <li><a href="/closing-request" class="text-white text-decoration-none">Request Closing</a></li>
+                    <li><a href="/faq" class="text-white text-decoration-none">FAQs</a></li>
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Resources</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/conference_rooms" class="text-white text-decoration-none">Conference Rooms</a></li>
+                    <li><a href="/create-ticket" class="text-white text-decoration-none">Create Ticket</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">AI Chat</a></li>
+                </ul>
+            </div>
+            <!-- Column 4 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Connect With Us</h6>
+                <div>
+                    <!-- <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a> -->
+                    <a href="#" class="text-white"><img src="../static/img/zillow reviews.png" alt="linkedin" style="width: 30px; height: 30px; color: white;"></a>
+                </div>
+            </div>
+        </div>
+        <hr class="border-light">
+        <div class="text-center text-white">
+            &copy; 2024 | WEBA. All rights reserved. Created by Codecis AI
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Closing</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self' *;">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+        .step-container {
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .file-upload {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .file-upload:hover {
+            background-color: #f1f1f1;
+        }
+
+        .form-footer {
+        background-color: #111827; /* Dark background color */
+        color: #ffffff; /* White text */
+        font-size: 14px;
+        }
+
+        
+        .form-footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+        text-decoration: underline;
+}
+
+
+        .form-footer h6 {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .form-footer i {
+            font-size: 18px; /* Icon size */
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-weight: bold;">Western Capital Mortgage</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/onboarding">Onboarding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/closing-request">Request Closing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pda">PDA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cda">CDA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/room_scheduling">Conference Room</a></li>
+                    <li class="nav-item"><a class="btn btn-primary me-2" href="/create-ticket">Create Ticket</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0" href="#">AI Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/logout" onclick="return confirm('Are you sure you want to logout?')">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container py-5">
+        <h2 class="text-center mb-4">CDA</h2>
+        <p class="text-center">Submit all necessary closing details and documents to ensure a smooth mortgage closing process.</p>
+        <p class="text-center text-muted">For support or questions, contact the Closing department or email compliance@wcmlending.net</p>
+
+        <!-- <div class="progress mb-4">
+            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Step 1: CDA Form</div>
+        </div> -->
+
+        <!-- Step 1: CDA Form -->
+        <div id="step1" class="step-container mb-4">
+            <h4>Complete CDA Form</h4>
+            <p>Fill out the (CDA) Google Form with borrower details, property information, and any other pertinent closing data.</p>
+            <a class="btn btn-primary mb-2" href="https://docs.google.com/forms/d/e/1FAIpQLSctuwMxkAApwnOST2fPrs1SOWXJOYEdqsUx4m4HfE2t2vjhBQ/viewform?usp=sharing" target="_blank">Fill Out Closing Form</a>
+            
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="formCompleteCheckbox">
+                <label class="form-check-label" for="formCompleteCheckbox">
+                    Mark form as complete
+                </label>
+            </div>
+
+            <button id="submitDocsButton" class="btn btn-primary mt-3" onclick="submitDocuments()">Submit CDA</button>
+        </div>
+
+    </div>
+
+ <!-- Footer -->
+<div class="form-footer">
+    <div class="container">
+        <div class="row text-white py-4">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+                <p class="mb-0">Forward-thinking mortgage solutions for a dynamic future.</p>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/home" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="/onboarding" class="text-white text-decoration-none">Onboarding</a></li>
+                    <li><a href="/closing-request" class="text-white text-decoration-none">Request Closing</a></li>
+                    <li><a href="/faq" class="text-white text-decoration-none">FAQs</a></li>
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Resources</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/conference_rooms" class="text-white text-decoration-none">Conference Rooms</a></li>
+                    <li><a href="/create-ticket" class="text-white text-decoration-none">Create Ticket</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">AI Chat</a></li>
+                </ul>
+            </div>
+            <!-- Column 4 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Connect With Us</h6>
+                <div>
+                    <!-- <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a> -->
+                    <a href="#" class="text-white"><img src="../static/img/zillow reviews.png" alt="linkedin" style="width: 30px; height: 30px; color: white;"></a>
+                </div>
+            </div>
+        </div>
+        <hr class="border-light">
+        <div class="text-center text-white">
+            &copy; 2024 | WEBA. All rights reserved. Created by Codecis AI
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const formCompleteCheckbox = document.getElementById('formCompleteCheckbox');
+    const submitButton = document.getElementById('submitDocsButton');
+    
+    formCompleteCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    });
+    
+    // Initially disable submit button
+    submitButton.disabled = true;
+});
+
+function submitDocuments() {
+    const formCompleteCheckbox = document.getElementById('formCompleteCheckbox');
+    
+    if (!formCompleteCheckbox.checked) {
+        alert('Please complete the Google Form and check the checkbox before submitting.');
+        return;
+    }
+    
+    // Show loading state
+    const submitButton = document.getElementById('submitDocsButton');
+    const originalText = submitButton.innerHTML;
+    submitButton.innerHTML = '<i class="bi bi-arrow-repeat"></i> Submitting...';
+    submitButton.disabled = true;
+    
+    // Submit to backend
+    fetch('/api/cda/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('CDA form submitted successfully!');
+            // Optionally redirect to another page
+            window.location.href = '/home';
+        } else {
+            throw new Error(data.message || 'Failed to submit CDA form');
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+        // Reset button state
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+    });
+}
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Onboarding - WCM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+        .progress-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .step-card {
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .step-card.completed {
+            border-color: #0d6efd;
+        }
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .form-footer {
+        background-color: #111827; /* Dark background color */
+        color: #ffffff; /* White text */
+        font-size: 14px;
+        }
+
+        
+        .form-footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+        text-decoration: underline;
+}
+
+
+        .form-footer h6 {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .form-footer i {
+            font-size: 18px; /* Icon size */
+        }
+
+        .faq-container {
+            background: #fff;
+            border: 1px solid #e6e6e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-item h5 {
+            cursor: pointer;
+        }
+        .faq-item p {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .step-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .status-icon {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .status-icon.pending {
+            color: #0d6efd;
+        }
+        
+        .status-icon.completed {
+            color: #198754;
+        }
+        
+        .badge {
+            font-size: 0.9rem;
+            padding: 0.4em 0.8em;
+        }
+        
+        .alert {
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .progress {
+            height: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        
+        .progress-bar {
+            font-size: 0.9rem;
+            line-height: 25px;
+            background-color: #28a745;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .completion-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #28a745;
+        }
+
+        .disabled {
+            pointer-events: none;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .section {
+            transition: opacity 0.3s ease-in-out;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav {
+                flex-direction: column;
+            }
+            .navbar-nav .nav-item {
+                margin-bottom: 10px;
+            }
+            .btn-group {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .btn-group .btn {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            .step-card .d-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .step-card .d-flex .btn {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            .form-footer .row {
+                flex-direction: column;
+                text-align: center;
+            }
+            .form-footer .col-md-3 {
+                margin-bottom: 20px;
+            }
+            .card-body .d-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .card-body .d-flex .btn {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            .card-body .d-flex .badge {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<<<<<<< HEAD
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#" style="font-weight: bold;">Western Capital Mortgage</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/onboarding">Onboarding</a></li>
+                <li class="nav-item"><a class="nav-link" href="/closing-request">Request Closing</a></li>
+                <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pda">PDA</a></li>
+                <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                <li class="nav-item"><a class="nav-link" href="/room_scheduling">Conference Room</a></li>
+                <li class="nav-item"><a class="btn btn-primary me-2" href="/create-ticket">Create Ticket</a></li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0" href="#">AI Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/logout" onclick="return confirm('Are you sure you want to logout?')">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+=======
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-weight: bold;">Western Capital Mortgage</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/onboarding">Onboarding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/closing-request">Request Closing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pda">PDA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cda">CDA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/room_scheduling">Conference Room</a></li>
+                    <li class="nav-item"><a class="btn btn-primary me-2" href="/create-ticket">Create Ticket</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0" href="#">AI Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/logout" onclick="return confirm('Are you sure you want to logout?')">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+>>>>>>> master
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">New Employee Onboarding</h2>
+    <p class="text-center text-muted">Welcome to Western Capital Mortgage! We've simplified your onboarding into seven quick steps. Complete these steps in order, and track your progress as you go.</p>
+
+    <div class="progress-container">
+        <input type="hidden" id="employeeName" value="{{ session.get('name', '') }}">
+        <div class="progress mb-4">
+            <div class="progress-bar" role="progressbar" id="onboardingProgress" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0% Complete</div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">W-9 Form</h5>
+                <div class="d-flex align-items-center flex-column flex-md-row">
+                    <div class="d-flex align-items-center mb-2 mb-md-0">
+                        <i class="bi bi-file-earmark-text status-icon" id="w9StatusIcon"></i>
+                        <span class="badge bg-primary me-2" id="w9Status">Pending</span>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row gap-2">
+                        <input type="file" id="w9File" accept=".pdf" style="display: none;" onchange="handleFileUpload(this, 'w9')">
+                        <button class="btn btn-primary btn-sm" onclick="window.open('https://www.irs.gov/pub/irs-pdf/fw9.pdf', '_blank')">View W-9 Form</button>
+                        <button class="btn btn-primary btn-sm" onclick="document.getElementById('w9File').click()">Upload W-9</button>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="markAsComplete('w9')">Mark as complete</button>
+                    </div>
+                </div>
+                <div id="w9Error" class="alert alert-danger mt-2" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Government ID</h5>
+                <div class="d-flex align-items-center flex-column flex-md-row">
+                    <div class="d-flex align-items-center mb-2 mb-md-0">
+                        <i class="bi bi-file-earmark-text status-icon" id="idStatusIcon"></i>
+                        <span class="badge bg-primary me-2" id="idStatus">Pending</span>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row gap-2">
+                        <input type="file" id="idFile" accept=".pdf,.jpg,.jpeg,.png" style="display: none;" onchange="handleFileUpload(this, 'id')">
+                        <button class="btn btn-primary btn-sm" onclick="document.getElementById('idFile').click()">Upload ID</button>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="markAsComplete('id')">Mark as complete</button>
+                    </div>
+                </div>
+                <div id="idError" class="alert alert-danger mt-2" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="step-card" id="contractSection">
+            <h5>Contract Draft Request Form</h5>
+            <p>Complete the contract draft request form.</p>
+            <div class="d-flex align-items-center flex-column flex-md-row">
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                    <i class="bi bi-file-earmark-text status-icon" id="contractStatusIcon"></i>
+                    <span class="badge bg-primary me-2" id="contractStatus">Pending</span>
+                </div>
+                <div class="d-flex flex-column flex-md-row gap-2">
+                    <button class="btn btn-primary btn-sm" onclick="openContractForm()">Open Form</button>
+                    <button class="btn btn-outline-secondary btn-sm" onclick="markAsComplete('contract')">Mark as complete</button>
+                </div>
+            </div>
+            <div id="contractError" class="alert alert-danger mt-2" style="display: none;"></div>
+        </div>
+
+        <div class="step-card" id="signSection">
+            <h5>Sign Your Contract</h5>
+            <p>Review and sign your employment contract once received via email.</p>
+            <div class="d-flex align-items-center flex-column flex-md-row">
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                    <i class="bi bi-file-earmark-text status-icon" id="signStatusIcon"></i>
+                    <span class="badge bg-primary me-2" id="signStatus">Pending</span>
+                </div>
+                <div class="d-flex flex-column flex-md-row gap-2">
+                    <button class="btn btn-outline-secondary btn-sm" onclick="markAsComplete('sign')">Mark as complete</button>
+                </div>
+            </div>
+            <div id="signError" class="alert alert-danger mt-2" style="display: none;"></div>
+        </div>
+
+        <div class="step-card" id="licenseSection">
+            <h5>Transfer Your License</h5>
+            <p>Complete the license transfer process.</p>
+            <div class="d-flex align-items-center flex-column flex-md-row">
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                    <i class="bi bi-file-earmark-text status-icon" id="licenseStatusIcon"></i>
+                    <span class="badge bg-primary me-2" id="licenseStatus">Pending</span>
+                </div>
+                <div class="d-flex flex-column flex-md-row gap-2">
+                    <button class="btn btn-primary btn-sm"><a href="https://docs.google.com/document/d/1xD-KkHelD8Jt1GvSBzUv1hGchqVPb1ndFAW2zfOoOQk/edit?tab=t.0#heading=h.w5o3ajmtr7wy" style="color:#fff; text-decoration: none;">Start Transfer</a></button>
+                    <button class="btn btn-outline-secondary btn-sm" onclick="markAsComplete('license')">Mark as complete</button>
+                </div>
+            </div>
+            <div id="licenseError" class="alert alert-danger mt-2" style="display: none;"></div>
+        </div>
+
+        <div class="step-card" id="loginSection">
+            <h5>Request Logins</h5>
+            <p>Request access to necessary systems (Credit, Arrive, Point, Email, LP, and DU).</p>
+            <div class="d-flex align-items-center flex-column flex-md-row">
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                    <i class="bi bi-file-earmark-text status-icon" id="loginStatusIcon"></i>
+                    <span class="badge bg-primary me-2" id="loginStatus">Pending</span>
+                </div>
+                <div class="d-flex flex-column flex-md-row gap-2">
+                    <button class="btn btn-primary btn-sm"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc5paqJd9zLrKSRCKuMNKL4dv8gmQodLgWxihaDPyaJ7vdSaw/viewform" style="color:#fff; text-decoration: none;">Request Access</a></button>
+                    <button class="btn btn-outline-secondary btn-sm" onclick="markAsComplete('login')">Mark as complete</button>
+                </div>
+            </div>
+            <div id="loginError" class="alert alert-danger mt-2" style="display: none;"></div>
+        </div>
+
+        <div class="d-flex justify-content-center mb-4">
+            <button id="submitOnboarding" class="btn btn-primary" onclick="submitOnboarding()">
+                Submit Onboarding
+            </button>
+        </div>
+
+<<<<<<< HEAD
+        <div class="step-card py-5">
+=======
+        <!-- <div class="step-card py-5">
+>>>>>>> master
+            <h5 class="mb-4">Onboarding How-To Checklist</h5>
+
+            <div class="faq-container">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                Where to Find Forms & Documents
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                Navigate to the Resources tab to access necessary forms.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                How to Submit a Ticket
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                Go to the Create a Ticket tab for any additional support requests.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                How to Access FAQs
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                Visit the FAQs tab for answers to common questions.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                How to Request Closings
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                Use the Request Closing tab to submit required documents.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                How to Schedule a Conference Room
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                Go to the Conference Room Scheduling tab to book meeting rooms.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<<<<<<< HEAD
+        </div>
+=======
+        </div> -->
+>>>>>>> master
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="form-footer">
+    <div class="container">
+        <div class="row text-white py-4">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+                <p class="mb-0">Forward-thinking mortgage solutions for a dynamic future.</p>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/home" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="/onboarding" class="text-white text-decoration-none">Onboarding</a></li>
+                    <li><a href="/closing-request" class="text-white text-decoration-none">Request Closing</a></li>
+                    <li><a href="/faq" class="text-white text-decoration-none">FAQs</a></li>
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Resources</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/room_scheduling" class="text-white text-decoration-none">Conference Rooms</a></li>
+                    <li><a href="/create-ticket" class="text-white text-decoration-none">Create Ticket</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">AI Chat</a></li>
+                </ul>
+            </div>
+            <!-- Column 4 -->
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Connect With Us</h6>
+                <div>
+                    <a href="https://www.zillow.com/lender-profile/WesternCapitalMortgage/" class="text-white"><img src="../static/img/zillow reviews.png" alt="linkedin" style="width: 30px; height: 30px; color: white;"></a>
+                </div>
+            </div>
+        </div>
+        <hr class="border-light">
+        <div class="text-center text-white">
+            &copy; 2024 | WEBA. All rights reserved. Created by Codecis AI
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Function to update status icons
+    function updateStatusIcon(type, completed) {
+        const icon = document.getElementById(`${type}StatusIcon`);
+        const status = document.getElementById(`${type}Status`);
+        
+        if (!icon || !status) return;
+        
+        if (completed) {
+            icon.classList.remove('bi-file-earmark-text', 'pending');
+            icon.classList.add('bi-check-circle', 'completed');
+            status.textContent = 'Completed';
+            status.classList.remove('bg-primary');
+            status.classList.add('bg-success');
+        } else {
+            icon.classList.remove('bi-check-circle', 'completed');
+            icon.classList.add('bi-file-earmark-text', 'pending');
+            status.textContent = 'Pending';
+            status.classList.remove('bg-success');
+            status.classList.add('bg-primary');
+        }
+    }
+
+    // Function to update progress bar
+    function updateProgress() {
+        const totalTasks = 7; // W-9, ID, Contract, Sign, License, Login, and Checklist
+        let completedTasks = 0;
+        
+        ['w9', 'id', 'contract', 'sign', 'license', 'login'].forEach(type => {
+            const status = document.getElementById(`${type}Status`);
+            if (status && status.textContent === 'Completed') {
+                completedTasks++;
+            }
+        });
+        
+        const progress = (completedTasks / totalTasks) * 100;
+        const progressBar = document.getElementById('onboardingProgress');
+        if (progressBar) {
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = Math.round(progress) + '% Complete';
+            progressBar.setAttribute('aria-valuenow', progress);
+        }
+    }
+
+    // Function to mark a task as complete
+    function markAsComplete(type) {
+        const errorDiv = document.getElementById(`${type}Error`);
+        errorDiv.style.display = 'none';
+        
+        fetch(`/mark-complete/${type}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                updateStatusIcon(type, true);
+                updateProgress();
+                checkAllStepsCompleted(); // Check if all steps are completed
+            } else {
+                throw new Error(data.message || 'Failed to mark as complete');
+            }
+        })
+        .catch(error => {
+            console.error('Error marking task as complete:', error);
+            errorDiv.textContent = error.message;
+            errorDiv.style.display = 'block';
+        });
+    }
+
+    // Function to open contract form in a new window
+    function openContractForm() {
+        const contractWindow = window.open('https://docs.google.com/forms/d/e/1FAIpQLSdXqRU099-J5OJQ9tns9XtxQcEi4uoILHyyZNxN-aFJIiG3mQ/viewform', '_blank');
+        
+        // Set up message listener for form completion
+        window.addEventListener('message', async function(event) {
+            if (event.data === 'contract_form_completed') {
+                try {
+                    const response = await fetch('/contract-form-completed', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    const result = await response.json();
+                    if (result.success) {
+                        updateStatusIcon('contract', true);
+                        updateProgress();
+                    } else {
+                        const errorDiv = document.getElementById('contractError');
+                        errorDiv.textContent = result.error || 'Error updating contract status';
+                        errorDiv.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    const errorDiv = document.getElementById('contractError');
+                    errorDiv.textContent = 'Error updating contract status';
+                    errorDiv.style.display = 'block';
+                }
+            }
+        });
+    }
+
+    function handleFileUpload(input, documentType) {
+        const file = input.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('document_type', documentType);
+        
+        // Get employee name and sanitize it for path
+        const employeeName = document.getElementById('employeeName').value || '';
+        const sanitizedName = employeeName.replace(/[^a-zA-Z0-9]/g, '_').trim();
+        formData.append('employee_name', sanitizedName);
+
+        const statusIcon = document.getElementById(`${documentType}StatusIcon`);
+        const statusBadge = document.getElementById(`${documentType}Status`);
+        const errorDiv = document.getElementById(`${documentType}Error`);
+        const uploadButton = input.nextElementSibling;
+        
+        // Reset error message
+        errorDiv.style.display = 'none';
+        
+        // Update UI to show upload in progress
+        statusBadge.textContent = 'Uploading...';
+        statusBadge.className = 'badge bg-warning me-2';
+        uploadButton.disabled = true;
+
+        fetch('/api/upload_document_api', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update UI for success
+                statusBadge.textContent = 'Uploaded';
+                statusBadge.className = 'badge bg-success me-2';
+                statusIcon.className = 'bi bi-check-circle-fill status-icon text-success';
+                
+                // Mark the checkbox as checked
+                const checkbox = input.parentElement.querySelector('.form-check-input');
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+                
+                // Update progress
+                updateProgress();
+            } else {
+                throw new Error(data.error || 'Upload failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error uploading file:', error);
+            // Update UI for error
+            statusBadge.textContent = 'Failed';
+            statusBadge.className = 'badge bg-danger me-2';
+            statusIcon.className = 'bi bi-x-circle-fill status-icon text-danger';
+            errorDiv.textContent = error.message;
+            errorDiv.style.display = 'block';
+        })
+        .finally(() => {
+            uploadButton.disabled = false;
+        });
+    }
+
+    // Function to check if all steps are completed
+    function checkAllStepsCompleted() {
+        const steps = ['w9', 'id', 'contract', 'sign', 'license', 'login'];
+        let allCompleted = true;
+        
+        for (const step of steps) {
+            const status = document.getElementById(`${step}Status`);
+            if (status && status.textContent !== 'Completed') {
+                allCompleted = false;
+                break;
+            }
+        }
+        
+        // Enable/disable submit button based on completion status
+        const submitBtn = document.getElementById('submitOnboarding');
+        submitBtn.disabled = !allCompleted;
+        return allCompleted;
+    }
+
+    // Function to handle form submission
+    async function submitOnboarding() {
+        const submitBtn = document.getElementById('submitOnboarding');
+        
+        try {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...';
+
+            // Gather all step statuses
+            const steps = ['w9', 'id', 'contract', 'sign', 'license', 'login'];
+            const stepStatuses = {};
+            steps.forEach(step => {
+                const status = document.getElementById(`${step}Status`);
+                stepStatuses[`${step}_completed`] = status.textContent === 'Completed';
+            });
+
+            const response = await fetch('/submit-onboarding', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    steps: stepStatuses,
+                    submitted_at: new Date().toISOString()
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            
+            if (result.success) {
+                alert('Onboarding completed successfully!');
+                window.location.href = '/home';
+            } else {
+                throw new Error(result.message || 'Failed to submit onboarding');
+            }
+        } catch (error) {
+            alert('Error submitting onboarding: ' + error.message);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Onboarding';
+        }
+    }
+
+    // Initialize status on page load
+    document.addEventListener('DOMContentLoaded', async function() {
+        try {
+            // Check if this is a new session
+            const isNewSession = sessionStorage.getItem('onboardingSession') !== 'active';
+            
+            // Get the onboarding status from the server
+            const response = await fetch('/onboarding-status');
+            const status = await response.json();
+            
+            // If this is a new session, reset all statuses to pending
+            if (isNewSession) {
+                ['w9', 'id', 'contract', 'sign', 'license', 'login'].forEach(type => {
+                    updateStatusIcon(type, false);
+                });
+                
+                // Mark this session as active
+                sessionStorage.setItem('onboardingSession', 'active');
+            } else {
+                // Update icons based on server status
+                updateStatusIcon('w9', status.w9_completed);
+                updateStatusIcon('id', status.id_completed);
+                updateStatusIcon('contract', status.contract_completed);
+                updateStatusIcon('sign', status.sign_completed);
+                updateStatusIcon('license', status.license_completed);
+                updateStatusIcon('login', status.login_completed);
+            }
+            
+            updateProgress();
+            
+        } catch (error) {
+            console.error('Error fetching onboarding status:', error);
+        }
+    });
+
+    // Add event listener for page unload to clear session
+    window.addEventListener('beforeunload', function() {
+        sessionStorage.removeItem('onboardingSession');
+    });
+</script>
+</body>
+</html>

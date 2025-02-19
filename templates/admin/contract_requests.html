@@ -1,0 +1,135 @@
+{% extends "admin/base_layout.html" %}
+
+{% block title %}Contract Requests - Admin Dashboard{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .request-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .status-badge {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    .status-badge.pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+    .status-badge.accepted {
+        background: #d4edda;
+        color: #155724;
+    }
+    .status-badge.declined {
+        background: #f8d7da;
+        color: #721c24;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Contract Requests</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search requests...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Requests List -->
+<div class="requests-list">
+    {% if contract_requests %}
+        {% for request in contract_requests %}
+        <div class="request-card">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>{{ request.user_name }}</h5>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-envelope"></i> {{ request.email }}
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-clock"></i> Submitted: {{ request.created_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-calendar"></i> Last Day: {{ request.last_day.strftime('%Y-%m-%d') }}
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-building"></i> Department: {{ request.department }}
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-check-circle"></i> Google Form Completed: {{ request.google_form_completed }}
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-box-arrow-in-left"></i> Equipment Returned: {{ request.equipment_returned }}
+                    </p>
+                    <p class="text-muted mb-1">
+                        <i class="bi bi-lock"></i> Access Revoked: {{ request.access_revoked }}
+                    </p>
+                    <p class="mb-3">{{ request.notes }}</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="mb-2">
+                        <span class="status-badge {{ request.status.lower() }}">
+                            {{ request.status.title() }}
+                        </span>
+                    </div>
+                    {% if request.status == 'pending' %}
+                    <button class="btn btn-success btn-sm mb-2" onclick="updateStatus('{{ request._id }}', 'accepted')">
+                        <i class="bi bi-check-circle"></i> Accept
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="updateStatus('{{ request._id }}', 'declined')">
+                        <i class="bi bi-x-circle"></i> Decline
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h3>No contract requests available.</h3>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function updateStatus(requestId, status) {
+        if (confirm(`Are you sure you want to ${status} this contract request?`)) {
+            fetch(`/admin/contract-requests/${requestId}/status`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ status: status })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert('Error updating status');
+                }
+            });
+        }
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        document.querySelectorAll('.request-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+</script>
+{% endblock %}
